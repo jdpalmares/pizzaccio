@@ -21,15 +21,6 @@ public class IndexAction extends BaseActionSupport {
 		return ActionSupport.SUCCESS;
 	}
 	
-	//When User Chooses Add Order Option in the navbar
-	@Action(value="goToAddOrder", results={
-			@Result(name=ActionSupport.SUCCESS, location="pages/userTable.jsp")
-	})
-	public String gotoAddOrder() {
-		System.out.println("Redirecting to Add Order Page");
-		return ActionSupport.SUCCESS;
-	}
-	
 	//When User Chooses View Order Option in the navbar
 	@Action(value="goToViewOrder", results={
 			@Result(name=ActionSupport.SUCCESS, location="pages/userTable.jsp")

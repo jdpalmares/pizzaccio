@@ -22,6 +22,7 @@
 	<![endif]-->
 	<script src="<s:url value="/js/jquery-1.9.1.js"/>"></script>
 	<link rel="stylesheet" href="<s:url value="/css/bootstrap.css" />" type="text/css"/>
+	<link rel="shortcut icon" href="<s:url value="/img/favico.ico" />">
 	<sb:head includeStylesResponsive="true" includeScripts="true" includeScriptsValidation="true" includeStyles="false"/>
 	</head>
   <body>
@@ -38,7 +39,7 @@
 				</a>
 				<div class="nav-collapse">
 					<ul class="nav main-nav">
-						<li><a href="<s:url action="goToAddOrder" namespace="/"/>">Add Order</a></li>
+						<li><a href="<s:url action="addOrder" namespace="/"/>">Add Order</a></li>
 						<li><a href="<s:url action="goToViewOrder" namespace="/"/>">View Order</a></li>
 						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>">Add Pizza</a></li>
 					</ul>
@@ -79,6 +80,7 @@
 				<div class="span12">
       				<jsp:invoke fragment="footer"/>
       				Copyright &copy; Seth Marquin Busque & Jon Daniel Palmares 2013. All rights reserved.
+      				<span class="pull-right">Pizzaccio in Japanese</span>
       			</div>
 			</div>
 		</div>
