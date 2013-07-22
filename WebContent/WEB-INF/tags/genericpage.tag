@@ -38,6 +38,7 @@
 						<li><a href="<s:url action="goToAddOrder" namespace="/"/>">Add Order</a></li>
 						<li><a href="<s:url action="goToViewOrder" namespace="/"/>">View Order</a></li>
 						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>">Add Pizza</a></li>
+						<li><a href="<s:url action="gotoViewPizza" namespace="/"/>">View Pizza</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
