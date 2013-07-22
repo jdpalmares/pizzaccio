@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TechTraining">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/conf"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src_custom"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src_base"/>
+        <property name="java-output-path" value="/OJTBitworks/build/classes"/>
+        <property name="context-root" value="TechTraining"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,21 @@
+body{
+	padding-top: 60px;
+	background: url("../img/p5.png");
+	padding-bottom: 30px;
+}
+
+.navbar-inverse > .navbar-inner {
+	background: url("../img/twinkle_twinkle.png") !important;
+}
+
+div#pagefooter {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height: 22px;
+	padding-top: 3px;
+	font-size: smaller;
+	color:#555;
+	background: url("../img/twinkle_twinkle.png") !important;
+}
