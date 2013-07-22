@@ -7,19 +7,53 @@
 
 <t:genericpage>
 	<jsp:attribute name="pageTitle">
-		Index
+		Pizzaccio | Online Pizza Ordering Portal
 	</jsp:attribute>
     <jsp:body>
-		<h1>Search Users</h1>
-		<s:form action="search" namespace="/user" theme="bootstrap" cssClass="form-vertical">
-			<div class="row">
-				<div class="span10">
-					<s:textfield name="user.id" cssClass="input-block-level" placeholder="User ID (e.g. 1, 10, 150)"></s:textfield>
-				</div>
-				<div class="span2">
-					<s:submit cssClass="btn btn-primary btn-block"></s:submit>
-				</div>
 			</div>
-		</s:form>
+		</div>
+	</div>
+	<div id="landing-carousel" class="carousel slide">
+	  <!-- Carousel items -->
+	  <div class="carousel-inner">
+	    <div class="active item">
+	    	<img src="<s:url value="/img/p1.jpg"/>"/>
+	    	<div class="carousel-caption">
+   				<h4>Delicious Pizza</h4>
+         		<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id 
+           		elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies 
+           		vehicula ut id elit.</p>
+   			</div>
+	    </div>
+	    <div class="item">
+	    	<img src="<s:url value="/img/p2.jpg"/>"/>
+	    	<div class="carousel-caption">
+              <h4>Second Thumbnail label</h4>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+	    </div>
+	    <div class="item">
+	    	<img src="<s:url value="/img/p3.jpg"/>"/>
+	    	<div class="carousel-caption">
+              <h4>Second Thumbnail label</h4>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+	    </div>
+	  </div>
+	  <!-- Carousel nav -->
+	  <a class="carousel-control left" href="#landing-carousel" data-slide="prev">&lsaquo;</a>
+	  <a class="carousel-control right" href="#landing-carousel" data-slide="next">&rsaquo;</a>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<div class="row">
+					<div class="span3 offset3">
+						<a href="#" class="btn btn-primary btn-large btn-block">Start taking orders</a>
+					</div>
+					<div class="span3">
+						<a href="#" class="btn btn-primary btn-large btn-block">Manage Products</a>
+					</div>
+				</div>
     </jsp:body>
 </t:genericpage>

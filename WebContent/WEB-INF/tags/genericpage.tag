@@ -21,10 +21,11 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script src="<s:url value="/js/jquery-1.9.1.js"/>"></script>
-	<sb:head includeStylesResponsive="true" includeScripts="true" includeScriptsValidation="true" includeStyles="true"/>
+	<link rel="stylesheet" href="<s:url value="/css/bootstrap.css" />" type="text/css"/>
+	<sb:head includeStylesResponsive="true" includeScripts="true" includeScriptsValidation="true" includeStyles="false"/>
 	</head>
   <body>
-  	<div class="navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -32,10 +33,17 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="<s:url action="index" namespace="/"/>">J2EEeXER</a>
+				<a class="brand brand-img" href="<s:url action="index" namespace="/"/>">
+					<img src="<s:url value="/img/pizzaccio_logo_80.png"/>"></img>
+				</a>
 				<div class="nav-collapse">
-					<ul class="nav">
-						<li><a href="<s:url action="index" namespace="/"/>">Index</a></li>
+					<ul class="nav main-nav">
+						<li><a href="<s:url action="index" namespace="/"/>">Add Order</a></li>
+						<li><a href="<s:url action="index" namespace="/"/>">View Order</a></li>
+						<li><a href="<s:url action="index" namespace="/"/>">Add Pizza</a></li>
+					</ul>
+					<ul class="nav pull-right">
+						<li><a href="#">Welcome, cashier!</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -70,7 +78,7 @@
 			<div class="row">
 				<div class="span12">
       				<jsp:invoke fragment="footer"/>
-      				Copyright &copy; Seth Marquin Busque 2013. All rights reserved.
+      				Copyright &copy; Seth Marquin Busque & Jon Daniel Palmares 2013. All rights reserved.
       			</div>
 			</div>
 		</div>

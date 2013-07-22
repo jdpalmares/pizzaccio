@@ -1,12 +1,13 @@
 body{
-	padding-top: 60px;
-	background: url("../img/p5.png");
+	padding-top: 80px;
+	background: url("../img/white_leather.png");
 	padding-bottom: 30px;
 }
 
+/*
 .navbar-inverse > .navbar-inner {
 	background: url("../img/twinkle_twinkle.png") !important;
-}
+}*/
 
 div#pagefooter {
 	position:fixed;
@@ -18,4 +19,17 @@ div#pagefooter {
 	font-size: smaller;
 	color:#555;
 	background: url("../img/twinkle_twinkle.png") !important;
+}
+
+a.brand.brand-img{
+    position: absolute;
+    padding: 0px 20px;
+}
+
+ul.nav.main-nav{
+    margin-left: 130px;
+}
+
+div#landing-carousel{
+	margin-top: -41px;
 }
