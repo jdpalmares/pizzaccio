@@ -38,9 +38,9 @@
 				</a>
 				<div class="nav-collapse">
 					<ul class="nav main-nav">
-						<li><a href="<s:url action="index" namespace="/"/>">Add Order</a></li>
-						<li><a href="<s:url action="index" namespace="/"/>">View Order</a></li>
-						<li><a href="<s:url action="index" namespace="/"/>">Add Pizza</a></li>
+						<li><a href="<s:url action="goToAddOrder" namespace="/"/>">Add Order</a></li>
+						<li><a href="<s:url action="goToViewOrder" namespace="/"/>">View Order</a></li>
+						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>">Add Pizza</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						<li><a href="#">Welcome, cashier!</a></li>
