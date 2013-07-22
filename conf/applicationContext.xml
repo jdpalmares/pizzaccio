@@ -12,13 +12,22 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/j2eeDB" />
+		<property name="url" value="jdbc:mysql://localhost:3306/pizza_store" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
 	</bean>
 
 	<!-- DAO bean definitions -->
-	<!-- Service bean definitions -->
+		<bean id="pizzaDAO" name="pizzaDAO" class="com.aws.global.dao.PizzaDAO" scope="prototype">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
+		
+	<!-- Service Implementation bean definitions -->
+		<bean id="pizzaServiceImpl" name="pizzaServiceImpl" class="com.aws.global.serviceImpl.PizzaServiceImpl" scope="prototype"/>
+		
 	<!-- classes bean definitions -->
-	<bean id="user" name="user" class="com.aws.global.classes.User" scope="prototype"/>
+		<bean id="order" name="order" class="com.aws.global.classes.Order" scope="prototype"/>
+		<bean id="pizza" name="pizza" class="com.aws.global.classes.Pizza" scope="prototype"/>
+		<bean id="transaction" name="transaction" class="com.aws.global.classes.Transaction" scope="prototype"/>
+
 </beans>
