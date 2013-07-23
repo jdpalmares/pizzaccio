@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.aws.global.classes.Order;
 import com.aws.global.classes.Pizza;
 import com.aws.global.common.base.BaseActionSupport;
+import com.aws.global.serviceImpl.OrderServiceImpl;
 import com.aws.global.serviceImpl.PizzaServiceImpl;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -23,18 +24,23 @@ public class SaveOrderAction extends BaseActionSupport {
 	private PizzaServiceImpl pizzaServiceImpl;
 	
 	@Autowired
+	@Qualifier("orderServiceImpl")
+	private OrderServiceImpl orderServiceImpl;
+	
+	@Autowired
 	@Qualifier("order")
 	private Order order;
 	
 	private ArrayList<Pizza> pizzas;
 	
 	@Action(value="saveOrder", results ={
-		@Result(name=ActionSupport.SUCCESS, location="pages/addOrder.jsp"),
+		@Result(name=ActionSupport.SUCCESS, location="addOrder", type="redirect"),
 		@Result(name=ActionSupport.INPUT, location="pages/addOrder.jsp"),
 	})
 	public String SaveOrder(){
 		pizzas = pizzaServiceImpl.getAllPizza();
 		order.setCancelStatus(false);
+		orderServiceImpl.addOrder(order);
 		System.out.println("Save Order");
 		return ActionSupport.SUCCESS;
 	}
@@ -75,6 +81,20 @@ public class SaveOrderAction extends BaseActionSupport {
 	 */
 	public void setPizzaServiceImpl(PizzaServiceImpl pizzaServiceImpl) {
 		this.pizzaServiceImpl = pizzaServiceImpl;
+	}
+
+	/**
+	 * @return the orderServiceImpl
+	 */
+	public OrderServiceImpl getOrderServiceImpl() {
+		return orderServiceImpl;
+	}
+
+	/**
+	 * @param orderServiceImpl the orderServiceImpl to set
+	 */
+	public void setOrderServiceImpl(OrderServiceImpl orderServiceImpl) {
+		this.orderServiceImpl = orderServiceImpl;
 	}
 
 	/**
