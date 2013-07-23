@@ -12,28 +12,8 @@
 	</jsp:attribute>
     <jsp:body>
 		<s:if test="orders neq null">
-		  /*<![CDATA[*/
-		  jQuery(function($) {
-			  $('.orderId').click(function(e){
-				  var value = $(this).val();
-				  var subTotal = parseInt($('#subTotal-'+value).text());
-				  var total = parseInt($('#total').text());
-				  if($(this).is(':checked')){
-					  var TrueTotal = subTotal + total;
-					  $('#total').text(TrueTotal);
-				  }
-				  else{
-					  var TrueTotal = total - subTotal;
-					  $('#total').text(TrueTotal);
-				  }
-				  
-			  });
-		  });
-		  /*]]>*/
-	  	</script>
 		<h1>Orders</h1>
-			<s:form action="orderTransaction" theme="bootstrap" cssClass="form-vertical" id="orderTable">
-			<s:form action="payOrder" theme="bootstrap">
+			<s:form action="payOrder" theme="bootstrap" cssClass="form-vertical" id="orderTable">
 				<table class="table">
 	  				<thead>
 						<tr>
@@ -58,7 +38,7 @@
 	  				</s:iterator>
 	  				</tbody>
 				</table>
-			<s:submit value="Pay Order"/>
+				<s:submit value="Pay Order"/>
 				<s:url id="simpleecho" value="/cancelOrder.action"/>
 	            <sj:submit 
 	            	id="formSubmit2"
@@ -71,7 +51,11 @@
 	            	button="true"
                 />
 			</s:form>
-			<div id="result"></div>
+			<strong>Total Amount</strong>
+			<div id="total" class="result ui-widget-content ui-corner-all">
+				0
+			</div>
+			<img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/>
 		</s:if>
 		<s:else>
 			<div class="row">
@@ -85,28 +69,35 @@
 					<h4>You want to order something yummy?</h4>
 					<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large">Order Now!</a>
 				</div>
-<strong>Total Amount</strong>
-			<div id="total" class="result ui-widget-content ui-corner-all">
-				0
 			</div>
-			<img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/>
-</div>
 		</s:else>
 		<script type="text/javascript">
 		  /*<![CDATA[*/
 		  jQuery(function($) {
-
 			  $('#checkAll').click(function(e){
 				  var checkAll = this.checked;
-				$('.orderRowCheck').each(function(e){
+				$('.orderId').each(function(e){
 					this.checked = checkAll;
 				});
 			  });
 			  $.subscribe('complete', function(event,data) {
-				  console.log($("#orderTable").serialize());
-			   	 alert('status: ' + event.originalEvent.status + '\n\nresponseText: \n' + event.originalEvent.request.responseText + 
+					console.log($("#orderTable").serialize());
+			   	 	alert('status: ' + event.originalEvent.status + '\n\nresponseText: \n' + event.originalEvent.request.responseText + 
 			     '\n\nThe output div should have already been updated with the responseText.');
 			    });
+			  $('.orderId').click(function(e){
+				  var value = $(this).val();
+				  var subTotal = parseInt($('#subTotal-'+value).text());
+				  var total = parseInt($('#total').text());
+				  if($(this).is(':checked')){
+					  var TrueTotal = subTotal + total;
+					  $('#total').text(TrueTotal);
+				  }
+				  else{
+					  var TrueTotal = total - subTotal;
+					  $('#total').text(TrueTotal);
+				  }
+			  });
 		  });
 		  /*]]>*/
 	  	</script>
