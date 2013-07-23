@@ -15,7 +15,10 @@
 		<h1>Orders</h1>
 			<table class="table">
   				<thead>
+			<s:form action="orderTransaction" theme="bootstrap">
+				<table class="table">
   					<tr>
+  					<th>status   </th>
     					<th>Pizza</th>
     					<th>Quantity</th>
     					<th>Unit Price</th>
@@ -26,6 +29,7 @@
   				<tbody>
   				<s:iterator value="orders">
   				<tr id="<s:property value="orderId" />">
+  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false"/></td>
     				<td><s:property value="pizzaName" /></td>
     				<td><s:property value="quantity" /></td>
     				<td><s:property value="unitPrice" /></td>
@@ -34,8 +38,12 @@
   				</tr>
   				</s:iterator>
   				</tbody>
+  				
 			</table>
-			<sj:submit ></sj:submit>
+				<s:submit value="Pay"/>
+  			<s:reset value="Cancel"/>
+			</s:form>
+
 		</s:if>
 		<s:else>
 			<div class="row">
