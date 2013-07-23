@@ -13,7 +13,7 @@
     <jsp:body>
 		<s:if test="orders neq null">
 		<h1>Orders</h1>
-			<s:form action="orderTransaction" theme="bootstrap" cssClass="form-vertical">
+			<s:form action="orderTransaction" theme="bootstrap" cssClass="form-vertical" id="orderTable">
 				<table class="table">
 	  				<thead>
 						<tr>
@@ -39,8 +39,19 @@
 	  				</tbody>
 				</table>
 				<s:submit value="Pay"/>
-  				<s:reset value="Cancel"/>
+				<s:url id="simpleecho" value="/cancelOrder.action"/>
+	            <sj:submit 
+	            	id="formSubmit2"
+	            	href="%{simpleecho}"
+                	targets="result" 
+                	value="Cancel Order" 
+                	timeout="2500" 
+                	indicator="indicator" 
+                	onCompleteTopics="complete"
+	            	button="true"
+                />
 			</s:form>
+			<div id="result"></div>
 		</s:if>
 		<s:else>
 			<div class="row">
@@ -65,6 +76,11 @@
 					this.checked = checkAll;
 				});
 			  });
+			  $.subscribe('complete', function(event,data) {
+				  console.log($("#orderTable").serialize());
+			   	 alert('status: ' + event.originalEvent.status + '\n\nresponseText: \n' + event.originalEvent.request.responseText + 
+			     '\n\nThe output div should have already been updated with the responseText.');
+			    });
 		  });
 		  /*]]>*/
 	  	</script>

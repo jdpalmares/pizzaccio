@@ -20,6 +20,7 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script src="<s:url value="/js/jquery-1.9.1.js"/>"></script>
+	<sj:head></sj:head>
 	<link rel="stylesheet" href="<s:url value="/css/bootstrap.css" />" type="text/css"/>
 	<link rel="shortcut icon" href="<s:url value="/img/favico.ico" />">
 	<sb:head includeStylesResponsive="true" includeScripts="true" includeScriptsValidation="true" includeStyles="false"/>
