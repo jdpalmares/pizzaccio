@@ -13,37 +13,34 @@
     <jsp:body>
 		<s:if test="orders neq null">
 		<h1>Orders</h1>
-			<table class="table">
-  				<thead>
-			<s:form action="orderTransaction" theme="bootstrap">
+			<s:form action="orderTransaction" theme="bootstrap" cssClass="form-vertical">
 				<table class="table">
-  					<tr>
-  					<th>status   </th>
-    					<th>Pizza</th>
-    					<th>Quantity</th>
-    					<th>Unit Price</th>
-    					<th>Take Out/Dine In</th>
-    					<th>SubTotal</th>
-  					</tr>
-  				</thead>
-  				<tbody>
-  				<s:iterator value="orders">
-  				<tr id="<s:property value="orderId" />">
-  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false"/></td>
-    				<td><s:property value="pizzaName" /></td>
-    				<td><s:property value="quantity" /></td>
-    				<td><s:property value="unitPrice" /></td>
-    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
-    				<td><s:property value="subTotal" /></td>
-  				</tr>
-  				</s:iterator>
-  				</tbody>
-  				
-			</table>
+	  				<thead>
+						<tr>
+		  					<th><s:checkbox name="checkAll" id="checkAll" value="false" /></th>
+	    					<th>Pizza</th>
+	    					<th>Quantity</th>
+	    					<th>Unit Price</th>
+	    					<th>Take Out/Dine In</th>
+	    					<th>SubTotal</th>
+	  					</tr>
+	  				</thead>
+	  				<tbody>
+	  				<s:iterator value="orders">
+	  				<tr id="<s:property value="orderId" />">
+	  					<td><s:checkbox name="orderId" fieldValue="%{orderId}" value="false" cssClass="orderRowCheck"/></td>
+	    				<td><s:property value="pizzaName" /></td>
+	    				<td><s:property value="quantity" /></td>
+	    				<td><s:property value="unitPrice" /></td>
+	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
+	    				<td><s:property value="subTotal" /></td>
+	  				</tr>
+	  				</s:iterator>
+	  				</tbody>
+				</table>
 				<s:submit value="Pay"/>
-  			<s:reset value="Cancel"/>
+  				<s:reset value="Cancel"/>
 			</s:form>
-
 		</s:if>
 		<s:else>
 			<div class="row">
@@ -59,5 +56,17 @@
 				</div>
 			</div>
 		</s:else>
+		<script type="text/javascript">
+		  /*<![CDATA[*/
+		  jQuery(function($) {
+			  $('#checkAll').click(function(e){
+				  var checkAll = this.checked;
+				$('.orderRowCheck').each(function(e){
+					this.checked = checkAll;
+				});
+			  });
+		  });
+		  /*]]>*/
+	  	</script>
     </jsp:body>
 </t:genericpage>
