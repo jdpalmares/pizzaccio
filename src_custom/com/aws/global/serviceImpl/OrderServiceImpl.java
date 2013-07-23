@@ -34,4 +34,11 @@ public class OrderServiceImpl implements OrderService{
 		orderDAO.cancelOrder(id);
 	}
 
+	@Override
+	public Order getOrderById(int id) {
+		// TODO Auto-generated method stub
+		Order order = orderDAO.getOrderById(id);
+		return order;
+	}
+
 }

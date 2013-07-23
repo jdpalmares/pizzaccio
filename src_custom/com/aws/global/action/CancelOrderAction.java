@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @ParentPackage("json-default")
 public class CancelOrderAction extends BaseActionSupport {
 	
-	public List<Integer> orderId;
+	private List<Integer> orderId;
 	
 	//Actions
 	@Action(value="cancelOrder", results ={

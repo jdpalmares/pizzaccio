@@ -77,7 +77,10 @@
 			  $('#checkAll').click(function(e){
 				  var checkAll = this.checked;
 				$('.orderId').each(function(e){
+					var prevState = this.checked;
 					this.checked = checkAll;
+					if(checkAll != prevState)
+						computeTotal(this);
 				});
 			  });
 			  $.subscribe('complete', function(event,data) {
@@ -86,10 +89,14 @@
 			     '\n\nThe output div should have already been updated with the responseText.');
 			    });
 			  $('.orderId').click(function(e){
-				  var value = $(this).val();
+				  computeTotal(this);
+			  });
+			  
+			  function computeTotal(e){
+				  var value = $(e).val();
 				  var subTotal = parseInt($('#subTotal-'+value).text());
 				  var total = parseInt($('#total').text());
-				  if($(this).is(':checked')){
+				  if($(e).is(':checked')){
 					  var TrueTotal = subTotal + total;
 					  $('#total').text(TrueTotal);
 				  }
@@ -97,7 +104,7 @@
 					  var TrueTotal = total - subTotal;
 					  $('#total').text(TrueTotal);
 				  }
-			  });
+			  }
 		  });
 		  /*]]>*/
 	  	</script>
