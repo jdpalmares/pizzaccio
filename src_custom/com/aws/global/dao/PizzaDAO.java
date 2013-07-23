@@ -15,6 +15,7 @@ public class PizzaDAO extends BaseDAO{
 		getJdbcTemplate().update(sql, new Object[] { pizzaName, pizzaPrice});
 	}
 	
+	//SQL Statement when user wants to get a list of pizzas
 	public List<Pizza> getAllPizza()
 	{
 		String sql = "SELECT * FROM Pizza";
