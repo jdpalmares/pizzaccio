@@ -14,15 +14,13 @@
 	    	<div class="span4 offset4">
 			<h1 class="text-center"> <img src="<s:url value="/img/cart128.png"/>" style="width:40px;height:40px"/> Add an Order</h1>
 			<hr/>
-			<s:form action="addPizza" theme="bootstrap" cssClass="form-vertical">
+			<s:form action="saveOrder" theme="bootstrap" cssClass="form-vertical">
+				<s:select label="What pizza?" 
+					headerKey="-1" headerValue="-Select a Pizza-"
+					list="pizzas" 
+					name="order.pizzaId" listKey="pizzaId" listValue="pizzaName" cssClass="input-block-level"/>
 				<s:textfield 
-					name="order.pizzaId" 
-					label="What Pizza?" 
-					placeholder="Please input pizza's name" 
-					cssClass="input-block-level"
-				></s:textfield>
-				<s:textfield 
-					name="pizza.quantity" 
+					name="order.quantity" 
 					label="Number of pizzas"
 					placeholder="e.g. 1, 2, 5, 20" 
 					cssClass="input-block-level"

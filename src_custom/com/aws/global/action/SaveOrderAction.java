@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 @Namespace("/")
-public class AddOrderAction extends BaseActionSupport {
+public class SaveOrderAction extends BaseActionSupport {
 	
 	@Autowired
 	@Qualifier("pizzaServiceImpl")
@@ -28,14 +28,25 @@ public class AddOrderAction extends BaseActionSupport {
 	
 	private ArrayList<Pizza> pizzas;
 	
-	//Actions
-	@Action(value="addOrder", results ={
-			@Result(name=ActionSupport.SUCCESS, location="pages/addOrder.jsp"),
+	@Action(value="saveOrder", results ={
+		@Result(name=ActionSupport.SUCCESS, location="pages/addOrder.jsp"),
+		@Result(name=ActionSupport.INPUT, location="pages/addOrder.jsp"),
 	})
-	public String AddOrderForm() {
+	public String SaveOrder(){
 		pizzas = pizzaServiceImpl.getAllPizza();
-		System.out.println("Add Order");
+		order.setCancelStatus(false);
+		System.out.println("Save Order");
 		return ActionSupport.SUCCESS;
+	}
+	
+	public void validate(){
+		pizzas = pizzaServiceImpl.getAllPizza();
+		if(order.getPizzaId()==-1){
+			addFieldError("order.pizzaId", "Pizza cannot be blank.");
+		}
+		if(order.getQuantity()==0){
+			addFieldError("order.quantity", "Quantity cannot be zero or blank.");
+		}
 	}
 	
 	/**

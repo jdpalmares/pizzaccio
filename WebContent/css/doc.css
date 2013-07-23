@@ -33,3 +33,16 @@ ul.nav.main-nav{
 div#landing-carousel{
 	margin-top: -41px;
 }
+
+.pizza-item > div.caption > h3 {
+	margin: 0px;
+}
+
+.pizza-item > div.actions {
+	width:100%;
+}
+.pizza-item > div.actions > a {
+	display: inline-block;
+	width:49%;
+	text-align:center;
+}

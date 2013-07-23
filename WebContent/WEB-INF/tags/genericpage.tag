@@ -14,7 +14,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="stylesheet" type="text/css" href="<s:url value="/css/doc.css"/>"/>
 	
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
@@ -24,6 +23,7 @@
 	<link rel="stylesheet" href="<s:url value="/css/bootstrap.css" />" type="text/css"/>
 	<link rel="shortcut icon" href="<s:url value="/img/favico.ico" />">
 	<sb:head includeStylesResponsive="true" includeScripts="true" includeScriptsValidation="true" includeStyles="false"/>
+	<link rel="stylesheet" type="text/css" href="<s:url value="/css/doc.css"/>"/>
 	</head>
   <body>
   	<div class="navbar navbar-fixed-top">

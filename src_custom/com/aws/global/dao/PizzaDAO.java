@@ -1,7 +1,6 @@
 package com.aws.global.dao;
 
-import java.util.List;
-
+import java.util.ArrayList;
 import com.aws.global.classes.Pizza;
 import com.aws.global.common.base.BaseDAO;
 import com.aws.global.mapper.PizzaRowMapper;
@@ -15,10 +14,10 @@ public class PizzaDAO extends BaseDAO{
 		getJdbcTemplate().update(sql, new Object[] { pizzaName, pizzaPrice});
 	}
 	
-	public List<Pizza> getAllPizza()
+	public ArrayList<Pizza> getAllPizza()
 	{
 		String sql = "SELECT * FROM Pizza";
-		List<Pizza> pizzas = getJdbcTemplate().query(sql, new PizzaRowMapper());
+		ArrayList<Pizza> pizzas = (ArrayList<Pizza>) getJdbcTemplate().query(sql, new PizzaRowMapper());
 		return pizzas;
 	}
 
