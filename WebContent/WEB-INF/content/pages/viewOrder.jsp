@@ -17,28 +17,37 @@
 				<table class="table">
 	  				<thead>
 						<tr>
-		  					<th><s:checkbox name="checkAll" id="checkAll" value="false" /></th>
-	    					<th>Pizza</th>
-	    					<th>Quantity</th>
-	    					<th>Unit Price</th>
-	    					<th>Take Out/Dine In</th>
-	    					<th>SubTotal</th>
+		  					<th class="span1"><s:checkbox name="checkAll" id="checkAll" value="false" /></th>
+	    					<th class="span6">Take Out/Dine In</th>
+	    					<th class="span6">Pizza</th>
+	    					<th class="span6">Quantity</th>
+	    					<th class="span6 text-right">Unit Price</th>
+	    					<th class="span3 text-right">SubTotal</th>
 	  					</tr>
 	  				</thead>
 	  				<tbody>
 	  				<s:iterator value="orders">
 	  				<tr id="<s:property value="orderId" />">
-  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false" cssClass="orderId"/></td>
+	  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false" cssClass="orderId"/></td>
+	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td><s:property value="quantity" /></td>
-	    				<td><s:property value="unitPrice" /></td>
-	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
-    				<td id="subTotal-<s:property value="orderId"/>"><s:property value="subTotal" /></td>
+	    				<td class="text-right"><s:property value="unitPrice" /></td>
+	    				<td id="subTotal-<s:property value="orderId"/>" class="text-right"><s:property value="subTotal" /></td>
 	  				</tr>
 	  				</s:iterator>
 	  				</tbody>
+	  				<tfoot>
+	  					<tr>
+	  						<td colspan="5"><h5 class="text-right">Total Amount</h5></td>
+	  						<td>
+	  							<h4 class="text-right">PHP <span id="total" class="result">0</span>.00
+								</h4>
+							</td>
+	  					</tr>
+	  				</tfoot>
 				</table>
-				<s:submit value="Pay Order"/>
+				<s:submit value="Pay Order" cssClass="btn btn-primary"/>
 				<s:url id="simpleecho" value="/cancelOrder.action"/>
 	            <sj:submit 
 	            	id="formSubmit2"
@@ -48,13 +57,9 @@
                 	timeout="2500" 
                 	indicator="indicator" 
                 	onCompleteTopics="complete"
-	            	button="true"
+                	cssClass="btn btn-primary"
                 />
 			</s:form>
-			<strong>Total Amount</strong>
-			<div id="total" class="result ui-widget-content ui-corner-all">
-				0
-			</div>
 			<img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/>
 		</s:if>
 		<s:else>
@@ -81,9 +86,11 @@
 				});
 			  });
 			  $.subscribe('complete', function(event,data) {
-					console.log($("#orderTable").serialize());
-			   	 	alert('status: ' + event.originalEvent.status + '\n\nresponseText: \n' + event.originalEvent.request.responseText + 
-			     '\n\nThe output div should have already been updated with the responseText.');
+					var jsonData = event.originalEvent.request.responseText;
+					jsonData = jQuery.parseJSON(jsonData);
+					$.each(jsonData.orderId, function(index, value) {
+						$('#'+value).remove();
+					});
 			    });
 			  $('.orderId').click(function(e){
 				  var value = $(this).val();

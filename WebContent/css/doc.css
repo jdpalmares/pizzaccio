@@ -46,3 +46,7 @@ div#landing-carousel{
 	width:49%;
 	text-align:center;
 }
+
+.text-right{
+	text-align: right !important;
+}

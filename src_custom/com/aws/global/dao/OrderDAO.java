@@ -10,7 +10,9 @@ public class OrderDAO extends BaseDAO{
 
 	public List<Order> getAllOrder()
 	{
-		String sql = "SELECT ORDER_ID, PIZZA_NAME, QUANTITY, PIZZA_PRICE, (QUANTITY*PIZZA_PRICE) AS PRICE , DINE_TYPE FROM PIZZA, PIZZA_STORE.ORDER WHERE PIZZA.PIZZA_ID = ORDER.PIZZA_ID AND (CANCEL_STATUS != 1 OR TRANSACTION_ID IS NULL)";
+		String sql = "SELECT "
+				+ "ORDER_ID, PIZZA_NAME, QUANTITY, PIZZA_PRICE, (QUANTITY*PIZZA_PRICE) AS PRICE , DINE_TYPE FROM PIZZA, PIZZA_STORE.ORDER "
+				+ "WHERE PIZZA.PIZZA_ID = ORDER.PIZZA_ID AND (cancel_status != 1 AND TRANSACTION_ID IS NULL)";
 		List<Order> orders = getJdbcTemplate().query(sql, new OrderRowMapper());
 		return orders;
 	}
@@ -28,7 +30,7 @@ public class OrderDAO extends BaseDAO{
 	}
 	
 	public void cancelOrder(int id){
-		String sql = "UPDATE ORDER SET cancel_status = 1 WHERE order_id = ?;";
+		String sql = "UPDATE `order` SET cancel_status = 1 WHERE order_id = ?;";
 		getJdbcTemplate().update(sql, new Object[] { id });
 	}
 }
