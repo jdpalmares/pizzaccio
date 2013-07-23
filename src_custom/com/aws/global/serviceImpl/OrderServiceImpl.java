@@ -23,4 +23,9 @@ public class OrderServiceImpl implements OrderService{
 		return orders;
 	}
 
+	@Override
+	public void addOrder(Order order) {
+		orderDAO.addOrder(order);
+	}
+
 }

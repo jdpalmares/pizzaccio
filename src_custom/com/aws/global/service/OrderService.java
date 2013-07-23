@@ -8,4 +8,6 @@ public interface OrderService {
 	
 	//declaration of abstract methods
 	public List<Order> getAllOrder();
+	
+	public void addOrder(Order order);
 }

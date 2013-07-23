@@ -14,4 +14,16 @@ public class OrderDAO extends BaseDAO{
 		List<Order> orders = getJdbcTemplate().query(sql, new OrderRowMapper());
 		return orders;
 	}
+	
+	public void addOrder(Order order){
+		String sql = "INSERT INTO `order` (pizza_id, quantity, dine_type, cancel_status) VALUES (?, ?, ?, ?);";
+		getJdbcTemplate().update(
+				sql,
+				new Object[] { 
+						order.getPizzaId(),
+						order.getQuantity(),
+						order.isDineType(),
+						order.isCancelStatus()
+				});
+	}
 }
