@@ -3,11 +3,13 @@ package com.aws.global.classes;
 public class Order {
 	//declaration of attributes
 	private int orderId;
-	private int pizzaId;
+	private String pizzaName;
 	private int quantity;
 	private boolean dineType;
 	private boolean cancelStatus;
 	private int transactionId;
+	private int unitPrice;
+	private int subTotal;
 	
 	//setters and getters for each attribute
 	public int getOrderId() {
@@ -16,11 +18,11 @@ public class Order {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public int getPizzaId() {
-		return pizzaId;
+	public String getPizzaName() {
+		return pizzaName;
 	}
-	public void setPizzaId(int pizzaId) {
-		this.pizzaId = pizzaId;
+	public void setPizzaName(String pizzaName) {
+		this.pizzaName = pizzaName;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -45,5 +47,17 @@ public class Order {
 	}
 	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
+	}
+	public int getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(int unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+	public int getSubTotal() {
+		return subTotal;
+	}
+	public void setSubTotal(int subTotal) {
+		this.subTotal = subTotal;
 	}
 }

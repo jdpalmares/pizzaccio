@@ -15,44 +15,30 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 @Namespace("/")
-
-public class AddPizzaAction extends BaseActionSupport{
-
+public class ViewPizzaAction extends BaseActionSupport{
 	//Autowired Variables
 	@Autowired
 	@Qualifier("pizza")
 	private Pizza pizza;
-	
+		
 	@Autowired
 	@Qualifier("pizzaServiceImpl")
 	private PizzaServiceImpl pizzaServiceImpl;
-	
+
 	//Other Variables
 	private List<Pizza> pizzas;
-		
-	//Actions
-	@Action(value="addPizza", results ={
-			@Result(name=ActionSupport.SUCCESS, location="pages/viewPizza.jsp"),
-			@Result(name=ActionSupport.INPUT, location="pages/addPizza.jsp")
+
+	//When User Chooses View Pizza Option in the navbar
+	@Action(value="gotoViewPizza", results={
+			@Result(name=ActionSupport.SUCCESS, location="pages/viewPizza.jsp")
 	})
-	public String AddPizza() {
-		System.out.println("Adding a pizza..");
-		pizzaServiceImpl.addPizza(pizza.getPizzaName(), pizza.getPizzaPrice());
+	public String gotoViewPizza() {
 		System.out.println("Redirecting to View Pizza Page");
 		setPizzas(pizzaServiceImpl.getAllPizza());
 		return ActionSupport.SUCCESS;
 	}
-	
-	public void validate(){
-		if("".equals(pizza.getPizzaName())){
-			addFieldError("pizza.pizzaName", "Pizza name cannot be blank");
-		}
-		if(pizza.getPizzaPrice()==0){
-			addFieldError("pizza.pizzaPrice", "Pizza price cannot be zero");
-		}
-	}
-	
-	//Setter and Getter for each variable
+		
+	//Getter and Setter for all variables
 	public Pizza getPizza() {
 		return pizza;
 	}
@@ -60,7 +46,7 @@ public class AddPizzaAction extends BaseActionSupport{
 	public void setPizza(Pizza pizza) {
 		this.pizza = pizza;
 	}
-	
+
 	public PizzaServiceImpl getPizzaServiceImpl() {
 		return pizzaServiceImpl;
 	}
