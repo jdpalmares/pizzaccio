@@ -34,6 +34,7 @@ public class GoToViewOrder extends BaseActionSupport{
 	})
 	public String gotoViewOrder() {
 		setOrders(orderServiceImpl.getAllOrder());
+		if (orders.isEmpty()) orders = null;
 		System.out.println("Redirecting to View Order Page");
 		return ActionSupport.SUCCESS;
 	}

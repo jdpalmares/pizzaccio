@@ -22,5 +22,5 @@
   <package name="awsExample" extends="struts-default">
     <default-action-ref name="index" />
   </package>
-
+  
 </struts>

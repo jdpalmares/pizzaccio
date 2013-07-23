@@ -25,8 +25,10 @@
 					placeholder="e.g. 1, 2, 5, 20" 
 					cssClass="input-block-level"
 				></s:textfield>
-				<s:radio label="" name="pizza.dineType" list="#{'1':'Take Out','0':'Dine In'}" value="1" />
+				<s:radio label="" name="order.dineType" list="#{true:'Take Out',false:'Dine In'}" value="1" />
 				<s:submit cssClass="btn btn-primary btn-block btn-large" value="Save"></s:submit>
+				<br/>
+				<s:reset cssClass="btn btn-danger pull-right" value="Clear Order"></s:reset>
 			</s:form>
 			</div>
 		</div>
