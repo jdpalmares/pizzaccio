@@ -12,4 +12,6 @@ public interface OrderService {
 	public void addOrder(Order order);
 	
 	public void cancelOrder(int id);
+	
+	public Order getOrderById(int id);
 }
