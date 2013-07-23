@@ -34,7 +34,7 @@
 		<h1>Orders</h1>
 		
 			<div class="row">
-			<s:form action="orderTransaction" theme="bootstrap">
+			<s:form action="payOrder" theme="bootstrap">
 				<table class="table">
   				<tr>
   					<th>status   </th>

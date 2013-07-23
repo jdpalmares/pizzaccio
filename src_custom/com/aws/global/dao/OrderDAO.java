@@ -26,4 +26,9 @@ public class OrderDAO extends BaseDAO{
 						order.isCancelStatus()
 				});
 	}
+	
+	public void cancelOrder(int id){
+		String sql = "UPDATE ORDER SET cancel_status = 1 WHERE order_id = ?;";
+		getJdbcTemplate().update(sql, new Object[] { id });
+	}
 }

@@ -10,4 +10,6 @@ public interface OrderService {
 	public List<Order> getAllOrder();
 	
 	public void addOrder(Order order);
+	
+	public void cancelOrder(int id);
 }
