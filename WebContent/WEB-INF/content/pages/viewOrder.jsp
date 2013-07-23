@@ -13,16 +13,19 @@
 		<h1>Orders</h1>
 		
 			<div class="row">
-				<table>
+			<s:form action="orderTransaction" theme="bootstrap">
+				<table class="table">
   				<tr>
-    				<th>Pizza</th>
-    				<th>Quantity</th>
-    				<th>Unit Price</th>
-    				<th>Take Out/Dine In</th>
-    				<th>SubTotal</th>
+  					<th>status   </th>
+    				<th>Pizza   </th>
+    				<th>Quantity   </th>
+    				<th>Unit Price   </th>
+    				<th>Take Out/Dine In </th>
+    				<th>SubTotal </th>
   				</tr>
   				<s:iterator value="orders" >
   				<tr>
+  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false"/></td>
     				<td><s:property value="pizzaName" /></td>
     				<td><s:property value="quantity" /></td>
     				<td><s:property value="unitPrice" /></td>
@@ -30,7 +33,12 @@
     				<td><s:property value="subTotal" /></td>
   				</tr>
   				</s:iterator>
+  				
+  				
 			</table>
+			<s:submit value="Pay"/>
+  			<s:reset value="Cancel"/>
+			</s:form>
 			</div>
     </jsp:body>
 </t:genericpage>
