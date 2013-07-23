@@ -49,10 +49,10 @@
 			<div class="span12">
 				<div class="row">
 					<div class="span3 offset3">
-						<a href="#" class="btn btn-primary btn-large btn-block">Start taking orders</a>
+						<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large btn-block">Start taking orders</a>
 					</div>
 					<div class="span3">
-						<a href="#" class="btn btn-primary btn-large btn-block">Manage Products</a>
+						<a href="<s:url action="gotoViewPizza" namespace="/"/>" class="btn btn-primary btn-large btn-block">Manage Products</a>
 					</div>
 				</div>
     </jsp:body>

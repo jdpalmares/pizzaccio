@@ -39,6 +39,7 @@ public class SaveOrderAction extends BaseActionSupport {
 	})
 	public String SaveOrder(){
 		pizzas = pizzaServiceImpl.getAllPizza();
+		System.out.println(order.isDineType());
 		order.setCancelStatus(false);
 		orderServiceImpl.addOrder(order);
 		System.out.println("Save Order");
