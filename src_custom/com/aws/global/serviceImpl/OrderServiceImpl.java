@@ -28,4 +28,10 @@ public class OrderServiceImpl implements OrderService{
 		orderDAO.addOrder(order);
 	}
 
+	@Override
+	public void cancelOrder(int id) {
+		// TODO Auto-generated method stub
+		orderDAO.cancelOrder(id);
+	}
+
 }

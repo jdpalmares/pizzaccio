@@ -12,8 +12,28 @@
 	</jsp:attribute>
     <jsp:body>
 		<s:if test="orders neq null">
+		  /*<![CDATA[*/
+		  jQuery(function($) {
+			  $('.orderId').click(function(e){
+				  var value = $(this).val();
+				  var subTotal = parseInt($('#subTotal-'+value).text());
+				  var total = parseInt($('#total').text());
+				  if($(this).is(':checked')){
+					  var TrueTotal = subTotal + total;
+					  $('#total').text(TrueTotal);
+				  }
+				  else{
+					  var TrueTotal = total - subTotal;
+					  $('#total').text(TrueTotal);
+				  }
+				  
+			  });
+		  });
+		  /*]]>*/
+	  	</script>
 		<h1>Orders</h1>
 			<s:form action="orderTransaction" theme="bootstrap" cssClass="form-vertical" id="orderTable">
+			<s:form action="payOrder" theme="bootstrap">
 				<table class="table">
 	  				<thead>
 						<tr>
@@ -28,17 +48,17 @@
 	  				<tbody>
 	  				<s:iterator value="orders">
 	  				<tr id="<s:property value="orderId" />">
-	  					<td><s:checkbox name="orderId" fieldValue="%{orderId}" value="false" cssClass="orderRowCheck"/></td>
+  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false" cssClass="orderId"/></td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td><s:property value="quantity" /></td>
 	    				<td><s:property value="unitPrice" /></td>
 	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
-	    				<td><s:property value="subTotal" /></td>
+    				<td id="subTotal-<s:property value="orderId"/>"><s:property value="subTotal" /></td>
 	  				</tr>
 	  				</s:iterator>
 	  				</tbody>
 				</table>
-				<s:submit value="Pay"/>
+			<s:submit value="Pay Order"/>
 				<s:url id="simpleecho" value="/cancelOrder.action"/>
 	            <sj:submit 
 	            	id="formSubmit2"
@@ -65,11 +85,17 @@
 					<h4>You want to order something yummy?</h4>
 					<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large">Order Now!</a>
 				</div>
+<strong>Total Amount</strong>
+			<div id="total" class="result ui-widget-content ui-corner-all">
+				0
 			</div>
+			<img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/>
+</div>
 		</s:else>
 		<script type="text/javascript">
 		  /*<![CDATA[*/
 		  jQuery(function($) {
+
 			  $('#checkAll').click(function(e){
 				  var checkAll = this.checked;
 				$('.orderRowCheck').each(function(e){
