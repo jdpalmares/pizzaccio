@@ -3,6 +3,7 @@ package com.aws.global.classes;
 public class Order {
 	//declaration of attributes
 	private int orderId;
+	private int pizzaId;
 	private String pizzaName;
 	private int quantity;
 	private boolean dineType;
@@ -17,6 +18,18 @@ public class Order {
 	}
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
+	}
+	/**
+	 * @return the pizzaId
+	 */
+	public int getPizzaId() {
+		return pizzaId;
+	}
+	/**
+	 * @param pizzaId the pizzaId to set
+	 */
+	public void setPizzaId(int pizzaId) {
+		this.pizzaId = pizzaId;
 	}
 	public String getPizzaName() {
 		return pizzaName;
