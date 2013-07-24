@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 @Namespace("/")
-public class GoToViewOrder extends BaseActionSupport{
+public class GoToViewOrderAction extends BaseActionSupport{
 	//Autowired Variables
 	@Autowired
 	@Qualifier("order")

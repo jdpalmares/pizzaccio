@@ -42,4 +42,9 @@ public class OrderDAO extends BaseDAO{
 		String sql = "UPDATE `order` SET cancel_status = 1 WHERE order_id = ?;";
 		getJdbcTemplate().update(sql, new Object[] { id });
 	}
+	
+	public void payOrder(int transaction_id, int id){
+		String sql = "UPDATE `order` SET transaction_id = ? WHERE order_id = ?;";
+		getJdbcTemplate().update(sql, new Object[] { transaction_id, id });
+	}
 }

@@ -24,10 +24,14 @@
 		<bean id="orderDAO" name="orderDAO" class="com.aws.global.dao.OrderDAO" scope="prototype">
 			<property name="dataSource" ref="dataSource" />
 		</bean>
+		<bean id="transactionDAO" name="transactionDAO" class="com.aws.global.dao.TransactionDAO" scope="prototype">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
 		
 	<!-- Service Implementation bean definitions -->
 		<bean id="pizzaServiceImpl" name="pizzaServiceImpl" class="com.aws.global.serviceImpl.PizzaServiceImpl" scope="prototype"/>
 		<bean id="orderServiceImpl" name="orderServiceImpl" class="com.aws.global.serviceImpl.OrderServiceImpl" scope="prototype"/>
+		<bean id="transactionServiceImpl" name="transactionServiceImpl" class="com.aws.global.serviceImpl.TransactionServiceImpl" scope="prototype"/>
 		
 	<!-- classes bean definitions -->
 		<bean id="order" name="order" class="com.aws.global.classes.Order" scope="prototype"/>

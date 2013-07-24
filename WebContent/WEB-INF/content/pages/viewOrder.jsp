@@ -137,6 +137,10 @@
 					  $('#total').text(TrueTotal);
 				  }
 			  }
+			  
+			  $('#orderTable').submit(function(e){
+				  this.submit();
+			  });
 		  });
 		  /*]]>*/
 	  	</script>
