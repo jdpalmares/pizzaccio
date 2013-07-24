@@ -22,8 +22,8 @@
 	              <h3><s:property value="pizzaName" /><span class="pull-right"><s:property value="pizzaPrice" /></span></h3>
 	            </div>
 	            <div class="actions">
-	        	    <a href="<s:url action="index" namespace="/"/>"><i class="icon-pencil"></i> Edit</a>
-	        	    <a href="<s:url action="index" namespace="/"/>"><i class="icon-trash"></i> Delete</a>    
+	        	    <a href="<s:url action="editPizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-pencil"></i> Edit</a>
+	        	    <a href="<s:url action="deletePizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-trash"></i> Delete</a>    
 	            </div>
 	        </div>
 		  </li>
