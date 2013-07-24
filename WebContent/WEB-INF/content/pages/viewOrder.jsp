@@ -14,11 +14,20 @@
 		
 		<section id="orderTableSection" <s:if test="orders eq null">style="display:none"</s:if>>
 		<h1><img src="<s:url value="/img/order-slip128.png"/>" style="width:40px;height:40px"/> Orders</h1>
+			<section id="validationErrors">
+			<s:if test="hasFieldErrors()">
+			   <div class="alert alert-danger">
+			   		<button type="button" class="close" data-dismiss="alert">&times;</button>
+			   		<strong>Please correct the following errors!</strong><br/>
+			      	<s:fielderror/>
+			   </div>
+			</s:if>
+			</section>
 			<s:form action="payOrder" theme="bootstrap" cssClass="form-vertical" id="orderTable">
 				<table class="table" id="orderFormTable">
 	  				<thead>
 						<tr>
-		  					<th class="span1"><s:checkbox name="checkAll" id="checkAll" value="false" /></th>
+		  					<th class="span1"><s:checkbox name="checkAll" id="checkAll" value="false" theme="simple"/></th>
 	    					<th class="span6">Take Out/Dine In</th>
 	    					<th class="span6">Pizza</th>
 	    					<th class="span6">Quantity</th>
@@ -29,7 +38,7 @@
 	  				<tbody>
 	  				<s:iterator value="orders">
 	  				<tr id="<s:property value="orderId" />">
-	  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false" cssClass="orderId" /></td>
+	  					<td><s:checkbox name="finalOrder" fieldValue="%{orderId}" value="false" cssClass="orderId" theme="simple"/></td>
 	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td><s:property value="quantity" /></td>
@@ -95,16 +104,28 @@
 				});
 			  });
 			  $.subscribe('beforeForm', function(event,data) {
-				  if (!confirm('Are you sure?')) {
+				  var check = false;
+				  $('.orderId').each(function(e){
+						check = check || this.checked;
+					});
+				  if(check){
+					  if (!confirm('Are you sure?')) {
+						  event.originalEvent.options.submit = false; 
+					  }
+				  } else {
+					  var html = '<div class="alert alert-danger">'+
+					  	'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+					  	'<strong>Please correct the following errors!</strong><ul><li>Please select an order to cancel.</li></ul></div>';
+					  $("#validationErrors").html(html);
 					  event.originalEvent.options.submit = false; 
-				} 
+				  }
 			  });
 			  $.subscribe('complete', function(event,data) {
 					var jsonData = event.originalEvent.request.responseText;
 					jsonData = jQuery.parseJSON(jsonData);
 					var rowLength = $('#orderFormTable tbody tr').length;
 					console.log(jsonData);
-					$.each(jsonData.orderId, function(index, value) {
+					$.each(jsonData.finalOrder, function(index, value) {
 						$('input[type=checkbox][value='+value+']').each(function(){
 							this.checked = false;
 							computeTotal(this);
@@ -137,7 +158,6 @@
 					  $('#total').text(TrueTotal);
 				  }
 			  }
-			  
 			  $('#orderTable').submit(function(e){
 				  this.submit();
 			  });

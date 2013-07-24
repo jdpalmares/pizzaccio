@@ -2,6 +2,7 @@ package com.aws.global.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -28,7 +29,7 @@ public class PayOrderAction extends BaseActionSupport{
 	private Order order;
 
 	//Other variables
-	private List<Integer> orderId;
+	private List<Integer> finalOrder;
 
 	private List<Order> orders;
 	
@@ -40,10 +41,9 @@ public class PayOrderAction extends BaseActionSupport{
 			@Result(name=ActionSupport.INPUT, location="pages/viewOrder.jsp"),
 	})
 	public String PayOrder(){
-		
 		List<Order> ordersTemp = new ArrayList<Order>();
-		for(int i=0; i< orderId.size(); i++){
-			ordersTemp.add(orderServiceImpl.getOrderById(orderId.get(i)));
+		for(int i=0; i< finalOrder.size(); i++){
+			ordersTemp.add(orderServiceImpl.getOrderById(finalOrder.get(i)));
 			setTotalPayment(getTotalPayment()+ordersTemp.get(i).getSubTotal());
 		}
 		setOrders(ordersTemp);
@@ -51,12 +51,20 @@ public class PayOrderAction extends BaseActionSupport{
 	}
 	
 	public void validate(){
-		if(getOrderId()==null){
+		clearFieldErrors();
+		
+		List<Integer> finalOrder = getFinalOrder();
+		
+		if(finalOrder==null || finalOrder.size() == 0){
 			setOrders(orderServiceImpl.getAllOrder());
 			if (orders.isEmpty()) orders = null;
 			System.out.println("Redirecting to View Order Page with Error");
 			addFieldError("checkAll", "Please choose a pizza to pay");
 		}
+		
+		Map<String, List<String>> errors = getFieldErrors();
+		clearFieldErrors();
+		setFieldErrors(errors);
 	}
 	
 	//Getter and Setters for each variables
@@ -68,12 +76,12 @@ public class PayOrderAction extends BaseActionSupport{
 		this.order = order;
 	}
 
-	public List<Integer> getOrderId() {
-		return orderId;
+	private List<Integer> getFinalOrder() {
+		return finalOrder;
 	}
 
-	public void setOrderId(List<Integer> orderId) {
-		this.orderId = orderId;
+	public void setFinalOrder(List<Integer> orderId) {
+		this.finalOrder = orderId;
 	}
 	
 	public OrderServiceImpl getOrderServiceImpl() {

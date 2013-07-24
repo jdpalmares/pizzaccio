@@ -22,32 +22,37 @@ public class CancelOrderAction extends BaseActionSupport {
 	@Qualifier("orderServiceImpl")
 	private OrderServiceImpl orderServiceImpl;
 	
-	private List<Integer> orderId;
+	private List<Integer> finalOrder;
 	
 	//Actions
 	@Action(value="cancelOrder", results ={
 			@Result(name=ActionSupport.SUCCESS, type="json"),
+			@Result(name=ActionSupport.ERROR, type="json"),
 	})
 	public String CancelOrder(){
-		for(int i=0; i< orderId.size(); i++){
-			orderServiceImpl.cancelOrder(orderId.get(i));
+		if(finalOrder == null || finalOrder.size() == 0) 
+			return ActionSupport.ERROR;
+		for(int i=0; i< finalOrder.size(); i++){
+			orderServiceImpl.cancelOrder(finalOrder.get(i));
 		}
 		return ActionSupport.SUCCESS;
 	}
 
 	/**
-	 * @return the orderId
+	 * @return the finalOrder
 	 */
-	public List<Integer> getOrderId() {
-		return orderId;
+	public List<Integer> getFinalOrder() {
+		return finalOrder;
 	}
 
+
 	/**
-	 * @param orderId the orderId to set
+	 * @param finalOrder the finalOrder to set
 	 */
-	public void setOrderId(List<Integer> orderId) {
-		this.orderId = orderId;
+	public void setFinalOrder(List<Integer> finalOrder) {
+		this.finalOrder = finalOrder;
 	}
+
 
 	/**
 	 * @return the orderServiceImpl
