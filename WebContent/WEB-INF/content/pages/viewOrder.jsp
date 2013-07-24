@@ -59,6 +59,7 @@
 	                	timeout="2500" 
 	                	indicator="indicator" 
 	                	onCompleteTopics="complete"
+	                	onBeforeTopics="beforeForm"
 	                	cssClass="btn btn-primary"
 	                />
 	                <img id="indicator" src="<s:url value="/img/indicator.gif"/>" alt="Loading..." style="display:none"/>
@@ -93,7 +94,11 @@
 						computeTotal(this);
 				});
 			  });
-			  
+			  $.subscribe('beforeForm', function(event,data) {
+				  if (!confirm('Are you sure?')) {
+					  event.originalEvent.options.submit = false; 
+				} 
+			  });
 			  $.subscribe('complete', function(event,data) {
 					var jsonData = event.originalEvent.request.responseText;
 					jsonData = jQuery.parseJSON(jsonData);
