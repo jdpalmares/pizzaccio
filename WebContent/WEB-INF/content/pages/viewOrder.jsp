@@ -11,10 +11,11 @@
 		Order Tab
 	</jsp:attribute>
     <jsp:body>
-		<s:if test="orders neq null">
-		<h1>Orders</h1>
+		
+		<section id="orderTableSection" <s:if test="orders eq null">style="display:none"</s:if>>
+		<h1><img src="<s:url value="/img/order-slip128.png"/>" style="width:40px;height:40px"/> Orders</h1>
 			<s:form action="payOrder" theme="bootstrap" cssClass="form-vertical" id="orderTable">
-				<table class="table">
+				<table class="table" id="orderFormTable">
 	  				<thead>
 						<tr>
 		  					<th class="span1"><s:checkbox name="checkAll" id="checkAll" value="false" /></th>
@@ -28,7 +29,7 @@
 	  				<tbody>
 	  				<s:iterator value="orders">
 	  				<tr id="<s:property value="orderId" />">
-	  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false" cssClass="orderId"/></td>
+	  					<td><s:checkbox name="orderId" fieldValue="%{orderId}"	value="false" cssClass="orderId" /></td>
 	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td><s:property value="quantity" /></td>
@@ -47,22 +48,25 @@
 	  					</tr>
 	  				</tfoot>
 				</table>
-				<s:submit value="Pay Order" cssClass="btn btn-primary"/>
-				<s:url id="simpleecho" value="/cancelOrder.action"/>
-	            <sj:submit 
-	            	id="formSubmit2"
-	            	href="%{simpleecho}"
-                	targets="result" 
-                	value="Cancel Order" 
-                	timeout="2500" 
-                	indicator="indicator" 
-                	onCompleteTopics="complete"
-                	cssClass="btn btn-primary"
-                />
+				<div class="form-actions">
+					<s:submit value="Pay Order" cssClass="btn btn-primary"/>
+					<s:url id="simpleecho" value="/cancelOrder.action"/>
+		            <sj:submit 
+		            	id="formSubmit2"
+		            	href="%{simpleecho}"
+	                	targets="result" 
+	                	value="Cancel Order" 
+	                	timeout="2500" 
+	                	indicator="indicator" 
+	                	onCompleteTopics="complete"
+	                	cssClass="btn btn-primary"
+	                />
+	                <img id="indicator" src="<s:url value="/img/indicator.gif"/>" alt="Loading..." style="display:none"/>
+                </div>
 			</s:form>
-			<img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/>
-		</s:if>
-		<s:else>
+		</section>	
+		
+		<section id="basketEmpty" <s:if test="orders neq null">style="display:none"</s:if>>
 			<div class="row">
 				<div class="span4 offset4">
 					<img src="<s:url value="/img/basket-empty.png"/>"/>
@@ -75,7 +79,8 @@
 					<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large">Order Now!</a>
 				</div>
 			</div>
-		</s:else>
+		</section>
+		
 		<script type="text/javascript">
 		  /*<![CDATA[*/
 		  jQuery(function($) {
@@ -88,12 +93,27 @@
 						computeTotal(this);
 				});
 			  });
+			  
 			  $.subscribe('complete', function(event,data) {
 					var jsonData = event.originalEvent.request.responseText;
 					jsonData = jQuery.parseJSON(jsonData);
+					var rowLength = $('#orderFormTable tbody tr').length;
+					console.log(jsonData);
 					$.each(jsonData.orderId, function(index, value) {
-						$('#'+value).remove();
+						$('input[type=checkbox][value='+value+']').each(function(){
+							this.checked = false;
+							computeTotal(this);
+						});
+						$('#'+value).fadeOut(function(e){
+							$(e).remove();
+						});
+						rowLength--;
 					});
+					if(rowLength==0){
+						$('#orderTableSection').fadeOut(500,function(){
+							$('#basketEmpty').fadeIn(500);	
+						});
+					}
 			    });
 			  $('.orderId').click(function(e){
 				  computeTotal(this);
