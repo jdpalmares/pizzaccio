@@ -1,6 +1,7 @@
 package com.aws.global.serviceImpl;
 
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -27,6 +28,25 @@ public class PizzaServiceImpl implements PizzaService{
 		// TODO Auto-generated method stub
 		ArrayList<Pizza> pizzas = pizzaDAO.getAllPizza();
 		return pizzas;
+	}
+
+	@Override
+	public Pizza getPizzaById(int id) {
+		// TODO Auto-generated method stub
+		Pizza pizza = pizzaDAO.getPizzaById(id);
+		return pizza;
+	}
+
+	@Override
+	public void editPizza(String pizza_name, int pizza_price, int id) {
+		// TODO Auto-generated method stub
+		pizzaDAO.editPizza(pizza_name, pizza_price, id);
+	}
+
+	@Override
+	public void deletePizza(int id) {
+		// TODO Auto-generated method stub
+		pizzaDAO.deletePizza(id);
 	}
 
 }
