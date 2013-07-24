@@ -15,7 +15,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 @Namespace("/")
-
 public class AddPizzaAction extends BaseActionSupport{
 
 	//Autowired Variables

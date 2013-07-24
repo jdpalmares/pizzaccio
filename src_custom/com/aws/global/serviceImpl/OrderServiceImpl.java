@@ -41,4 +41,10 @@ public class OrderServiceImpl implements OrderService{
 		return order;
 	}
 
+	@Override
+	public void payOrder(int transaction_id, int id) {
+		// TODO Auto-generated method stub
+		orderDAO.payOrder(transaction_id, id);
+	}
+
 }

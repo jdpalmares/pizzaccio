@@ -14,4 +14,6 @@ public interface OrderService {
 	public void cancelOrder(int id);
 	
 	public Order getOrderById(int id);
+	
+	public void payOrder(int transaction_id, int id);
 }
