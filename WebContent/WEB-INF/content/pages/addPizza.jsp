@@ -28,7 +28,8 @@
 					cssClass="input-block-level"
 				></s:textfield>
 				<s:submit cssClass="btn btn-primary btn-block btn-large" value="Save"></s:submit>
-				<s:reset cssClass="btn btn-primary btn-block btn-large" value="Clear"></s:reset>
+				<br>
+				<s:reset cssClass="btn btn-danger pull-right" value="Clear"></s:reset>
 			</s:form>
 			</div>
 		</div>
