@@ -10,7 +10,7 @@
 <html lang="en">
 	<head>
 	<meta charset="utf-8">
-	<title><jsp:invoke fragment="pageTitle"/></title>
+	<title><jsp:invoke fragment="pageTitle"/> | Pizzaccio | Online Pizza Ordering Portal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -40,13 +40,13 @@
 				</a>
 				<div class="nav-collapse">
 					<ul class="nav main-nav">
-						<li><a href="<s:url action="addOrder" namespace="/"/>">Add Order</a></li>
-						<li><a href="<s:url action="goToViewOrder" namespace="/"/>">View Order</a></li>
-						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>">Add Pizza</a></li>
-						<li><a href="<s:url action="gotoViewPizza" namespace="/"/>">View Pizza</a></li>
+						<li><a href="<s:url action="addOrder" namespace="/"/>"><s:text name="link.common.navbar.AddOrder" /></a></li>
+						<li><a href="<s:url action="goToViewOrder" namespace="/"/>"><s:text name="link.common.navbar.ViewOrder" /></a></li>
+						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>"><s:text name="link.common.navbar.AddPizza" /></a></li>
+						<li><a href="<s:url action="gotoViewPizza" namespace="/"/>"><s:text name="link.common.navbar.ViewPizza" /></a></li>
 					</ul>
 					<ul class="nav pull-right">
-						<li><a href="#">Welcome, cashier!</a></li>
+						<li><a href="#"><s:text name="link.common.navbar.welcome" /></a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -66,7 +66,7 @@
 						</div>
 					</s:if>
 					<s:if test="hasActionMessages()">
-					   <div class="alert alert-info">
+					   <div class="alert alert-success">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
 				      		<s:actionmessage/>
 					   </div>
@@ -81,8 +81,18 @@
 			<div class="row">
 				<div class="span12">
       				<jsp:invoke fragment="footer"/>
-      				Copyright &copy; Seth Marquin Busque & Jon Daniel Palmares 2013. All rights reserved.
-      				<span class="pull-right">Pizzaccio in Japanese</span>
+      				<s:text name="label.common.footer.copyright"></s:text>
+      				<span class="pull-right">
+      					<s:url id="localeEN" namespace="/" action="locale" >
+						   <s:param name="request_locale" >en</s:param>
+						</s:url>
+						<s:url id="localeJP" namespace="/" action="locale" >
+						   <s:param name="request_locale" >jp</s:param>
+						</s:url>
+						Pizzaccio in 
+						<s:a href="%{localeEN}" ><s:text name="label.common.footer.language_en" /></s:a> |
+						<s:a href="%{localeJP}" ><s:text name="label.common.footer.language_jp" /></s:a>
+      				</span>
       			</div>
 			</div>
 		</div>

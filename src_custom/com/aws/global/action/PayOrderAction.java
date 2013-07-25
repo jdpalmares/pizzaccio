@@ -59,7 +59,7 @@ public class PayOrderAction extends BaseActionSupport{
 			setOrders(orderServiceImpl.getAllOrder());
 			if (orders.isEmpty()) orders = null;
 			System.out.println("Redirecting to View Order Page with Error");
-			addFieldError("checkAll", "Please choose a pizza to pay");
+			addFieldError("checkAll", getText("error.common.orderCheck.required"));
 		}
 		
 		Map<String, List<String>> errors = getFieldErrors();

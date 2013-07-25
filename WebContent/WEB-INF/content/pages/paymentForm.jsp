@@ -18,7 +18,6 @@
 				<table class="table">
 	  				<thead>
 						<tr>
-							
 	    					<th class="span2">Qty</th>
 	    					<th class="span6">Pizza</th>
 	    					<th class="span6 text-right">Unit Price</th>

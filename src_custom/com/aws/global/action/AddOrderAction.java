@@ -28,12 +28,17 @@ public class AddOrderAction extends BaseActionSupport {
 	
 	private ArrayList<Pizza> pizzas;
 	
+	private boolean success;
+	
 	//Actions
 	@Action(value="addOrder", results ={
 			@Result(name=ActionSupport.SUCCESS, location="pages/addOrder.jsp"),
 	})
 	public String AddOrderForm() {
 		pizzas = pizzaServiceImpl.getAllPizza();
+		if(isSuccess()){
+			addActionMessage(getText("sucess.common.addOrder"));
+		}
 		System.out.println("Add Order");
 		return ActionSupport.SUCCESS;
 	}
@@ -78,5 +83,19 @@ public class AddOrderAction extends BaseActionSupport {
 	 */
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	/**
+	 * @return the success
+	 */
+	public boolean isSuccess() {
+		return success;
+	}
+
+	/**
+	 * @param success the success to set
+	 */
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 }

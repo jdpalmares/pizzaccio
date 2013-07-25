@@ -30,8 +30,9 @@
 					cssClass="input-block-level"
 				></s:textfield>
 				<s:hidden name="pizza.pizzaId" value="%{pizza.pizzaId}"/>
-				<s:submit cssClass="btn btn-primary btn-block btn-large" value="Edit"></s:submit>
-				<s:reset cssClass="btn btn-primary btn-block btn-large" value="Clear"></s:reset>
+				<s:submit cssClass="btn btn-primary btn-block btn-large" value="Save Changes"></s:submit>
+				<br/>
+				<s:reset cssClass="btn btn-danger pull-right" value="Clear"></s:reset>
 			</s:form>
 			</div>
 		</div>

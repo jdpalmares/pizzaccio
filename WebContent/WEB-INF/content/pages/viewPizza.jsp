@@ -10,7 +10,7 @@
 		Pizzas
 	</jsp:attribute>
     <jsp:body>
-		<h1>Pizzas</h1>
+		<h1><img src="<s:url value="/img/pizza128.png"/>" style="width:40px;height:40px"/> Pizzas</h1>
 		<ul class="thumbnails">
 		  <s:iterator value="pizzas" >
 		  <li class="span3">
@@ -23,11 +23,20 @@
 	            </div>
 	            <div class="actions">
 	        	    <a href="<s:url action="editPizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-pencil"></i> Edit</a>
-	        	    <a href="<s:url action="deletePizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-trash"></i> Delete</a>    
+	        	    <a class="deletePizza" href="<s:url action="deletePizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-trash"></i> Delete</a>    
 	            </div>
 	        </div>
 		  </li>
 		  </s:iterator>
 		</ul>
+		<script type="text/javascript">
+		  /*<![CDATA[*/
+		  jQuery(function($) {
+			  $('.deletePizza').click(function(e){
+				  return confirm("Are you sure?");
+			  });
+		  });
+		  /*]]>*/
+	  	</script>
     </jsp:body>
 </t:genericpage>

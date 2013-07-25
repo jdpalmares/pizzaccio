@@ -7,7 +7,7 @@
 
 <t:genericpage>
 	<jsp:attribute name="pageTitle">
-		Pizzaccio | Online Pizza Ordering Portal
+		Welcome
 	</jsp:attribute>
     <jsp:body>
 			</div>
@@ -19,24 +19,22 @@
 	    <div class="active item">
 	    	<img src="<s:url value="/img/p1.jpg"/>"/>
 	    	<div class="carousel-caption">
-   				<h4>Delicious Pizza</h4>
-         		<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id 
-           		elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies 
-           		vehicula ut id elit.</p>
+   				<h4><s:text name="carousel.dummy.label" /></h4>
+         		<p><s:text name="carousel.dummy.description" /></p>
    			</div>
 	    </div>
 	    <div class="item">
 	    	<img src="<s:url value="/img/p2.jpg"/>"/>
 	    	<div class="carousel-caption">
-              <h4>Second Thumbnail label</h4>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h4><s:text name="carousel.dummy.label" /></h4>
+              <p><s:text name="carousel.dummy.description" /></p>
             </div>
 	    </div>
 	    <div class="item">
 	    	<img src="<s:url value="/img/p3.jpg"/>"/>
 	    	<div class="carousel-caption">
-              <h4>Second Thumbnail label</h4>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h4><s:text name="carousel.dummy.label" /></h4>
+              <p><s:text name="carousel.dummy.description" /></p>
             </div>
 	    </div>
 	  </div>
@@ -49,10 +47,14 @@
 			<div class="span12">
 				<div class="row">
 					<div class="span3 offset3">
-						<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large btn-block">Start taking orders</a>
+						<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large btn-block">
+							<s:text name="label.common.button.startOrder" />
+						</a>
 					</div>
 					<div class="span3">
-						<a href="<s:url action="gotoViewPizza" namespace="/"/>" class="btn btn-primary btn-large btn-block">Manage Products</a>
+						<a href="<s:url action="gotoViewPizza" namespace="/"/>" class="btn btn-primary btn-large btn-block">
+							<s:text name="label.common.button.manageProducts" />
+						</a>
 					</div>
 				</div>
     </jsp:body>

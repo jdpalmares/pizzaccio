@@ -34,7 +34,7 @@ public class SaveOrderAction extends BaseActionSupport {
 	private ArrayList<Pizza> pizzas;
 	
 	@Action(value="saveOrder", results ={
-		@Result(name=ActionSupport.SUCCESS, location="addOrder", type="redirect"),
+		@Result(name=ActionSupport.SUCCESS, location="addOrder", type="redirect", params = {"success", "true"}),
 		@Result(name=ActionSupport.INPUT, location="pages/addOrder.jsp"),
 	})
 	public String SaveOrder(){
@@ -47,10 +47,10 @@ public class SaveOrderAction extends BaseActionSupport {
 	public void validate(){
 		pizzas = pizzaServiceImpl.getAllPizza();
 		if(order.getPizzaId()==-1){
-			addFieldError("order.pizzaId", "Pizza cannot be blank.");
+			addFieldError("order.pizzaId", getText("error.common.pizzaname.required"));
 		}
 		if(order.getQuantity()==0){
-			addFieldError("order.quantity", "Quantity cannot be zero or blank.");
+			addFieldError("order.quantity", getText("error.common.quantity.required"));
 		}
 		System.out.println(order.isDineType());
 	}

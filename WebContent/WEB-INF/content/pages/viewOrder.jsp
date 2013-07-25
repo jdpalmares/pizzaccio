@@ -8,17 +8,17 @@
 
 <t:genericpage>
 	<jsp:attribute name="pageTitle">
-		Order Tab
+		<s:text name="label.common.form.ListOrder" />
 	</jsp:attribute>
     <jsp:body>
 		
 		<section id="orderTableSection" <s:if test="orders eq null">style="display:none"</s:if>>
-		<h1><img src="<s:url value="/img/order-slip128.png"/>" style="width:40px;height:40px"/> Orders</h1>
+		<h1><img src="<s:url value="/img/order-slip128.png"/>" style="width:40px;height:40px"/> <s:text name="label.common.form.ListOrder" /></h1>
 			<section id="validationErrors">
 			<s:if test="hasFieldErrors()">
 			   <div class="alert alert-danger">
 			   		<button type="button" class="close" data-dismiss="alert">&times;</button>
-			   		<strong>Please correct the following errors!</strong><br/>
+			   		<strong><s:text name="label.common.validation.header" /></strong><br/>
 			      	<s:fielderror/>
 			   </div>
 			</s:if>
@@ -28,18 +28,18 @@
 	  				<thead>
 						<tr>
 		  					<th class="span1"><s:checkbox name="checkAll" id="checkAll" value="false" theme="simple"/></th>
-	    					<th class="span6">Take Out/Dine In</th>
-	    					<th class="span6">Pizza</th>
-	    					<th class="span6">Quantity</th>
-	    					<th class="span6 text-right">Unit Price</th>
-	    					<th class="span3 text-right">SubTotal</th>
+	    					<th class="span6"><s:text name="label.common.column.dineType" /></th>
+	    					<th class="span6"><s:text name="label.common.column.pizzaName" /></th>
+	    					<th class="span6"><s:text name="label.common.column.quantity" /></th>
+	    					<th class="span6 text-right"><s:text name="label.common.column.unitPrice" /></th>
+	    					<th class="span3 text-right"><s:text name="label.common.column.subTotal" /></th>
 	  					</tr>
 	  				</thead>
 	  				<tbody>
 	  				<s:iterator value="orders">
 	  				<tr id="<s:property value="orderId" />">
 	  					<td><s:checkbox name="finalOrder" fieldValue="%{orderId}" value="false" cssClass="orderId" theme="simple"/></td>
-	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
+	    				<td><s:if test="dineType eq 0"><s:text name="label.common.radio.dineIn" /></s:if><s:else><s:text name="label.common.radio.takeOut" /></s:else></td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td><s:property value="quantity" /></td>
 	    				<td class="text-right"><s:property value="unitPrice" /></td>
@@ -49,7 +49,7 @@
 	  				</tbody>
 	  				<tfoot>
 	  					<tr>
-	  						<td colspan="5"><h5 class="text-right">Total Amount</h5></td>
+	  						<td colspan="5"><h5 class="text-right"><s:text name="label.common.table.totalAmt" /></h5></td>
 	  						<td>
 	  							<h4 class="text-right">PHP <span id="total" class="result">0</span>.00
 								</h4>
@@ -58,13 +58,13 @@
 	  				</tfoot>
 				</table>
 				<div class="form-actions">
-					<s:submit value="Pay Order" cssClass="btn btn-primary"/>
+					<s:submit key="label.common.button.payOrder" cssClass="btn btn-primary"/>
 					<s:url id="simpleecho" value="/cancelOrder.action"/>
 		            <sj:submit 
 		            	id="formSubmit2"
 		            	href="%{simpleecho}"
 	                	targets="result" 
-	                	value="Cancel Order" 
+	                	key="label.common.button.cancelOrder" 
 	                	timeout="2500" 
 	                	indicator="indicator" 
 	                	onCompleteTopics="complete"
@@ -83,10 +83,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="span6 offset3" style="text-align:center">
-					<h1>Your basket seems empty.</h1>
-					<h4>You want to order something yummy?</h4>
-					<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large">Order Now!</a>
+				<div class="span8 offset2" style="text-align:center">
+					<h1><s:text name="label.common.basketEmpty.heading" /></h1>
+					<h4><s:text name="label.common.basketEmpty.description" /></h4>
+					<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large"><s:text name="label.common.basketEmpty.orderNow" /></a>
 				</div>
 			</div>
 		</section>
@@ -115,7 +115,7 @@
 				  } else {
 					  var html = '<div class="alert alert-danger">'+
 					  	'<button type="button" class="close" data-dismiss="alert">&times;</button>'+
-					  	'<strong>Please correct the following errors!</strong><ul><li>Please select an order to cancel.</li></ul></div>';
+					  	'<strong><s:text name="label.common.validation.header" /></strong><ul><li><s:text name="error.common.orderCancel.required" /></li></ul></div>';
 					  $("#validationErrors").html(html);
 					  event.originalEvent.options.submit = false; 
 				  }
