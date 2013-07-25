@@ -44,9 +44,10 @@
 						<li><a href="<s:url action="goToViewOrder" namespace="/"/>">View Order</a></li>
 						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>">Add Pizza</a></li>
 						<li><a href="<s:url action="gotoViewPizza" namespace="/"/>">View Pizza</a></li>
+						<li><a href="<s:url action="gotoSales" namespace="/"/>">Sales Check</a></li>
 					</ul>
 					<ul class="nav pull-right">
-						<li><a href="#">Welcome, cashier!</a></li>
+						<li><a href="<s:url action="index" namespace="/"/>">Welcome, cashier!</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
