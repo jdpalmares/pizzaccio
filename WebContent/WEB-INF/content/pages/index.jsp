@@ -47,7 +47,7 @@
 			<div class="span12">
 				<div class="row">
 					<div class="span3 offset3">
-						<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large btn-block">
+						<a href="<s:url action="goToAddOrder" namespace="/"/>" class="btn btn-primary btn-large btn-block">
 							<s:text name="label.common.button.startOrder" />
 						</a>
 					</div>

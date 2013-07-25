@@ -18,27 +18,27 @@
 				<table class="table">
 	  				<thead>
 						<tr>
-	    					<th class="span2">Qty</th>
-	    					<th class="span6">Pizza</th>
-	    					<th class="span6 text-right">Unit Price</th>
-	    					<th class="span6">Dine Type</th>
-	    					<th class="span3 text-right">SubTotal</th>
+	    					<th class="span6"><s:text name="label.common.column.dineType" /></th>
+	    					<th class="span2"><s:text name="label.common.column.quantity" /></th>
+	    					<th class="span6"><s:text name="label.common.column.pizzaName" /></th>
+	    					<th class="span6 text-right"><s:text name="label.common.column.unitPrice" /></th>
+	    					<th class="span3 text-right"><s:text name="label.common.column.subTotal" /></th>
 	  					</tr>
 	  				</thead>
 	  				<tbody>
 	  				<s:iterator value="orders" status="ctr">
 	  				<tr id="<s:property value="orderId" />">
-	  					<td><s:property value="quantity" /><s:hidden name="finalOrders.orderId" value="%{orderId}"/>
+	  					<td><s:if test="dineType eq 0"><s:text name="label.common.radio.dineIn" /></s:if><s:else><s:text name="label.common.radio.takeOut" /></s:else></td>
+	    				<td><s:property value="quantity" /><s:hidden name="finalOrders.orderId" value="%{orderId}"/>
 	    				</td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td class="text-right"><s:property value="unitPrice" /></td>
-	    				<td><s:if test="dineType eq 0">Dine In</s:if><s:else>Take Out</s:else></td>
 	    				<td id="subTotal-<s:property value="orderId"/>" class="text-right"><s:property value="subTotal" /></td>
 	  				</tr>
 	  				</s:iterator>
 	  				<tfoot>
 	  					<tr>
-	  						<td colspan="3"><h5 class="text-right">Total Amount</h5><s:hidden name="totalPayment" value="%{totalPayment}"/></td>
+	  						<td colspan="3"><h5 class="text-right"><s:text name="label.common.table.totalAmt" /></h5><s:hidden name="totalPayment" value="%{totalPayment}"/></td>
 	  						<td colspan="2">
 	  							<h4 class="text-right">PHP <s:property value="totalPayment" />
 								</h4>
@@ -47,20 +47,18 @@
 	  				</tfoot>
 				</table>
 				<s:textfield 
-					name="transaction.payment" 
-					label="Payment" 
-					placeholder="Please input payment amount" 
+					key="label.common.input.payment"
+					name="transaction.payment"
 					cssClass="input-block-level"
 				></s:textfield>
 				<s:textfield 
-					name="transaction.customer" 
-					label="Customer Name" 
-					placeholder="Please input customer's name" 
+					name="transaction.customer"
+					key="label.common.input.customerName"
 					cssClass="input-block-level"
 				></s:textfield>
-				<s:submit cssClass="btn btn-primary btn-block btn-large" value="Save"></s:submit>
+				<s:submit cssClass="btn btn-primary btn-block btn-large" value="%{getText('label.common.button.save')}"></s:submit>
 				<br/>
-				<s:reset cssClass="btn btn-danger pull-right" value="Clear"></s:reset>
+				<s:reset cssClass="btn btn-danger pull-right" key="label.common.button.clear"></s:reset>
 			</s:form>
 			</div>
 		</div>

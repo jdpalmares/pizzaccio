@@ -7,10 +7,10 @@
 
 <t:genericpage>
 	<jsp:attribute name="pageTitle">
-		Pizzas
+		<s:text name="label.common.form.ListPizza" />
 	</jsp:attribute>
     <jsp:body>
-		<h1><img src="<s:url value="/img/pizza128.png"/>" style="width:40px;height:40px"/> Pizzas</h1>
+		<h1><img src="<s:url value="/img/pizza128.png"/>" style="width:40px;height:40px"/> <s:text name="label.common.form.ListPizza" /></h1>
 		<ul class="thumbnails">
 		  <s:iterator value="pizzas" >
 		  <li class="span3">
@@ -22,8 +22,8 @@
 	              <h3><s:property value="pizzaName" /><span class="pull-right"><s:property value="pizzaPrice" /></span></h3>
 	            </div>
 	            <div class="actions">
-	        	    <a href="<s:url action="editPizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-pencil"></i> Edit</a>
-	        	    <a class="deletePizza" href="<s:url action="deletePizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-trash"></i> Delete</a>    
+	        	    <a href="<s:url action="editPizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-pencil"></i> <s:text name="link.common.thumbnail.edit" /></a>
+	        	    <a class="deletePizza" href="<s:url action="deletePizza" namespace="/"><s:param name="pizzaId" value="pizzaId"/></s:url>"><i class="icon-trash"></i> <s:text name="link.common.thumbnail.delete" /></a>    
 	            </div>
 	        </div>
 		  </li>

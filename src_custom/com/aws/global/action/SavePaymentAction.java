@@ -67,13 +67,13 @@ public class SavePaymentAction extends BaseActionSupport{
 	
 	public void validate(){
 		if(transaction.getPayment()==0){
-			addFieldError("transaction.payment", "Payment cannot be 0");
+			addFieldError("transaction.payment", getText("error.common.payment.required"));
 		}
 		else if(transaction.getPayment()<getTotalPayment()){
-			addFieldError("transaction.payment", "Payment cannot be less than total amount");
+			addFieldError("transaction.payment", getText("error.common.payment.range"));
 		}
 		if("".equals(transaction.getCustomer())){
-			addFieldError("transaction.customer", "Customer name cannot be blank");
+			addFieldError("transaction.customer", getText("error.common.customerName.required"));
 		}
 		List<Order> ordersTemp = new ArrayList<Order>();
 		for(int i=0; i< finalOrders.size(); i++){

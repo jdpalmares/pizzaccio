@@ -58,7 +58,7 @@
 	  				</tfoot>
 				</table>
 				<div class="form-actions">
-					<s:submit key="label.common.button.payOrder" cssClass="btn btn-primary"/>
+					<s:submit cssClass="btn btn-primary" value="%{getText('label.common.button.payOrder')}"/>
 					<s:url id="simpleecho" value="/cancelOrder.action"/>
 		            <sj:submit 
 		            	id="formSubmit2"
@@ -86,7 +86,7 @@
 				<div class="span8 offset2" style="text-align:center">
 					<h1><s:text name="label.common.basketEmpty.heading" /></h1>
 					<h4><s:text name="label.common.basketEmpty.description" /></h4>
-					<a href="<s:url action="addOrder" namespace="/"/>" class="btn btn-primary btn-large"><s:text name="label.common.basketEmpty.orderNow" /></a>
+					<a href="<s:url action="goToAddOrder" namespace="/"/>" class="btn btn-primary btn-large"><s:text name="label.common.basketEmpty.orderNow" /></a>
 				</div>
 			</div>
 		</section>

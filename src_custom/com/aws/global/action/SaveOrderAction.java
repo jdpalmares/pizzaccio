@@ -34,7 +34,7 @@ public class SaveOrderAction extends BaseActionSupport {
 	private ArrayList<Pizza> pizzas;
 	
 	@Action(value="saveOrder", results ={
-		@Result(name=ActionSupport.SUCCESS, location="addOrder", type="redirect", params = {"success", "true"}),
+		@Result(name=ActionSupport.SUCCESS, location="goToAddOrder", type="redirect", params = {"success", "true"}),
 		@Result(name=ActionSupport.INPUT, location="pages/addOrder.jsp"),
 	})
 	public String SaveOrder(){

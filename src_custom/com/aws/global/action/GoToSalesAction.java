@@ -44,6 +44,9 @@ public class GoToSalesAction extends BaseActionSupport{
 		setSalesToday(salesServiceImpl.getTotalSalesToday());
 		setMoneyToday(salesServiceImpl.getMoneyInHandToday());
 		setExtraMoneyToday(getMoneyToday()-getSalesToday());
+		if((salesList == null)||(salesList.size()==0)){
+			salesList = null;
+		}
 		return ActionSupport.SUCCESS;
 	}
 		
