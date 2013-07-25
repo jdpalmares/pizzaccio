@@ -11,7 +11,6 @@
 		<s:text name="label.common.form.ListOrder" />
 	</jsp:attribute>
     <jsp:body>
-		
 		<section id="orderTableSection" <s:if test="orders eq null">style="display:none"</s:if>>
 		<h1><img src="<s:url value="/img/order-slip128.png"/>" style="width:40px;height:40px"/> <s:text name="label.common.form.ListOrder" /></h1>
 			<section id="validationErrors">

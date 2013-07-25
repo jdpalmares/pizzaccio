@@ -90,9 +90,13 @@
 						<s:url id="localeJP" namespace="/" action="locale" >
 						   <s:param name="request_locale" >jp</s:param>
 						</s:url>
+						<s:url id="localePH" namespace="/" action="locale" >
+						   <s:param name="request_locale" >ph</s:param>
+						</s:url>
 						Pizzaccio in 
 						<s:a href="%{localeEN}" ><s:text name="label.common.footer.language_en" /></s:a> |
-						<s:a href="%{localeJP}" ><s:text name="label.common.footer.language_jp" /></s:a>
+						<s:a href="%{localeJP}" ><s:text name="label.common.footer.language_jp" /></s:a> |
+						<s:a href="%{localePH}" ><s:text name="label.common.footer.language_ph" /></s:a>
       				</span>
       			</div>
 			</div>
