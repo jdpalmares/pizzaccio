@@ -44,6 +44,7 @@
 						<li><a href="<s:url action="goToViewOrder" namespace="/"/>"><s:text name="link.common.navbar.ViewOrder" /></a></li>
 						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>"><s:text name="link.common.navbar.AddPizza" /></a></li>
 						<li><a href="<s:url action="gotoViewPizza" namespace="/"/>"><s:text name="link.common.navbar.ViewPizza" /></a></li>
+						<li><a href="<s:url action="gotoSales" namespace="/"/>">Sales Check</a></li>
 					</ul>
 					<ul class="nav pull-right">
 						<li><a href="#"><s:text name="link.common.navbar.welcome" /></a></li>

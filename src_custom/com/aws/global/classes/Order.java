@@ -3,12 +3,14 @@ package com.aws.global.classes;
 public class Order {
 	//declaration of attributes
 	private int orderId;
-	private int pizzaId;
-	private String pizzaName;
+	private int pizzaId;	
 	private int quantity;
 	private boolean dineType;
 	private boolean cancelStatus;
 	private int transactionId;
+	
+	//variables not found in the order table
+	private String pizzaName;
 	private int unitPrice;
 	private int subTotal;
 	

@@ -27,15 +27,20 @@
 		<bean id="transactionDAO" name="transactionDAO" class="com.aws.global.dao.TransactionDAO" scope="prototype">
 			<property name="dataSource" ref="dataSource" />
 		</bean>
+		<bean id="salesDAO" name="salesDAO" class="com.aws.global.dao.SalesDAO" scope="prototype">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
 		
 	<!-- Service Implementation bean definitions -->
 		<bean id="pizzaServiceImpl" name="pizzaServiceImpl" class="com.aws.global.serviceImpl.PizzaServiceImpl" scope="prototype"/>
 		<bean id="orderServiceImpl" name="orderServiceImpl" class="com.aws.global.serviceImpl.OrderServiceImpl" scope="prototype"/>
 		<bean id="transactionServiceImpl" name="transactionServiceImpl" class="com.aws.global.serviceImpl.TransactionServiceImpl" scope="prototype"/>
+		<bean id="salesServiceImpl" name="salesServiceImpl" class="com.aws.global.serviceImpl.SalesServiceImpl" scope="prototype"/>
 		
 	<!-- classes bean definitions -->
 		<bean id="order" name="order" class="com.aws.global.classes.Order" scope="prototype"/>
 		<bean id="pizza" name="pizza" class="com.aws.global.classes.Pizza" scope="prototype"/>
 		<bean id="transaction" name="transaction" class="com.aws.global.classes.Transaction" scope="prototype"/>
-
+		<bean id="sales" name="sales" class="com.aws.global.classes.Sales" scope="prototype"/>
+		
 </beans>
