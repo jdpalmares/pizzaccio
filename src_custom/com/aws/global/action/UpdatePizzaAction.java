@@ -41,6 +41,8 @@ public class UpdatePizzaAction extends BaseActionSupport{
 	}
 
 	public void validate(){
+		String pizzaDummyName = pizza.getPizzaName();
+		pizza.setPizzaName(pizzaDummyName.trim());
 		if("".equals(pizza.getPizzaName())){
 			addFieldError("pizza.pizzaName", "Pizza's Name cannot be blank.");
 		}
