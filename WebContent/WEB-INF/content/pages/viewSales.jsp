@@ -16,23 +16,23 @@
 				<table class="table" id="orderFormTable">
 	  				<thead>
 						<tr>
-	    					<th class="span6"><s:text name="label.common.column.dineType" /></th>
+	    					<th class="span6"><s:text name="label.common.column.customerName" /></th>
+	    					<th class="span3"><s:text name="label.common.column.dineType" /></th>
 	    					<th class="span6"><s:text name="label.common.column.pizzaName" /></th>
 	    					<th class="span6"><s:text name="label.common.column.quantity" /></th>
-	    					<th class="span6 text-right"><s:text name="label.common.column.unitPrice" /></th>
+	    					<th class="span3 text-right"><s:text name="label.common.column.unitPrice" /></th>
 	    					<th class="span3 text-right"><s:text name="label.common.column.subTotal" /></th>
-	    					<th class="span3 text-right"><s:text name="label.common.column.customerName" /></th>
 	  					</tr>
 	  				</thead>
 	  				<tbody>
 	  				<s:iterator value="salesList">
 	  				<tr>
+	  					<td><s:property value="customerName" /></td>
 	    				<td><s:if test="dineType eq 0"><s:text name="label.common.radio.dineIn" /></s:if><s:else>Take Out</s:else></td>
 	    				<td><s:property value="pizzaName" /></td>
 	    				<td><s:property value="quantity" /></td>
-	    				<td class="text-right"><s:property value="pizzaPrice" /></td>
-	    				<td id="totalPrice-<s:property value="orderId"/>" class="text-right"><s:property value="totalPrice" /></td>
-	  					<td class="text-right"><s:property value="customerName" /></td>
+	    				<td class="text-right">PHP <s:property value="pizzaPrice" />.00</td>
+	    				<td id="totalPrice-<s:property value="orderId"/>" class="text-right">PHP <s:property value="totalPrice" />.00</td>
 	  				</tr>
 	  				</s:iterator>
 	  				</tbody>

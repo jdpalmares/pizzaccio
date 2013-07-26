@@ -27,7 +27,9 @@ public class GoToViewOrderAction extends BaseActionSupport{
 
 	//Other Variables
 	private List<Order> orders;
-		
+	
+	private boolean success;
+	
 	//When User Chooses View Order Option in the navbar
 	@Action(value="goToViewOrder", results={
 			@Result(name=ActionSupport.SUCCESS, location="pages/viewOrder.jsp")
@@ -36,6 +38,9 @@ public class GoToViewOrderAction extends BaseActionSupport{
 		setOrders(orderServiceImpl.getAllOrder());
 		if (orders.isEmpty()) orders = null;
 		System.out.println("Redirecting to View Order Page");
+		if(isSuccess()){
+			addActionMessage(getText("sucess.common.addTransaction"));
+		}
 		return ActionSupport.SUCCESS;
 	}
 	
@@ -62,5 +67,19 @@ public class GoToViewOrderAction extends BaseActionSupport{
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+
+	/**
+	 * @return the success
+	 */
+	public boolean isSuccess() {
+		return success;
+	}
+
+	/**
+	 * @param success the success to set
+	 */
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 }

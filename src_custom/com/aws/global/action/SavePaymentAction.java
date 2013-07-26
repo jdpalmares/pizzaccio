@@ -44,7 +44,7 @@ public class SavePaymentAction extends BaseActionSupport{
 
 	//Actions
 	@Action(value="savePayment", results ={
-			@Result(name=ActionSupport.SUCCESS, location="pages/viewOrder.jsp"),
+			@Result(name=ActionSupport.SUCCESS, location="goToViewOrder.action", type="redirect", params={"success","true"}),
 			@Result(name=ActionSupport.INPUT, location="pages/paymentForm.jsp")
 	})
 	public String PayOrder() {

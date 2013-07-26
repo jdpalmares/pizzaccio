@@ -47,7 +47,7 @@
 						<li><a href="<s:url action="gotoSales" namespace="/"/>"><s:text name="link.common.navbar.Sales" /></a></li>
 					</ul>
 					<ul class="nav pull-right">
-						<li><a href="#"><s:text name="link.common.navbar.welcome" /></a></li>
+						<li><a><s:text name="link.common.navbar.welcome" /></a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
