@@ -29,7 +29,9 @@ public class ViewPizzaAction extends BaseActionSupport{
 	private List<Pizza> pizzas;
 	
 	private boolean success;
-
+	private boolean updated;
+	private boolean deleted;
+	
 	//When User Chooses View Pizza Option in the navbar
 	@Action(value="gotoViewPizza", results={
 			@Result(name=ActionSupport.SUCCESS, location="pages/viewPizza.jsp")
@@ -39,6 +41,12 @@ public class ViewPizzaAction extends BaseActionSupport{
 		setPizzas(pizzaServiceImpl.getAllPizza());
 		if(isSuccess()){
 			addActionMessage(getText("sucess.common.addPizza"));
+		}
+		if(isUpdated()){
+			addActionMessage(getText("sucess.common.updatePizza"));
+		}
+		if(isDeleted()){
+			addActionMessage(getText("sucess.common.deletePizza"));
 		}
 		return ActionSupport.SUCCESS;
 	}
@@ -80,5 +88,33 @@ public class ViewPizzaAction extends BaseActionSupport{
 	 */
 	public void setSuccess(boolean success) {
 		this.success = success;
+	}
+
+	/**
+	 * @return the deleted
+	 */
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	/**
+	 * @param deleted the deleted to set
+	 */
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	/**
+	 * @return the updated
+	 */
+	public boolean isUpdated() {
+		return updated;
+	}
+
+	/**
+	 * @param updated the updated to set
+	 */
+	public void setUpdated(boolean updated) {
+		this.updated = updated;
 	}
 }

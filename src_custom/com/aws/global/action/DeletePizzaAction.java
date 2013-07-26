@@ -32,7 +32,7 @@ public class DeletePizzaAction extends BaseActionSupport{
 	
 	//Actions
 	@Action(value="deletePizza", results ={
-			@Result(name=ActionSupport.SUCCESS, location="pages/viewPizza.jsp")
+			@Result(name=ActionSupport.SUCCESS, location="gotoViewPizza.action", type="redirect", params={"deleted","true"})
 	})
 	public String EditPizza() {
 		System.out.println("Deleting a Pizza");

@@ -30,7 +30,7 @@ public class UpdatePizzaAction extends BaseActionSupport{
 		
 	//Actions
 	@Action(value="updatePizza", results ={
-			@Result(name=ActionSupport.SUCCESS, location="pages/viewPizza.jsp"),
+			@Result(name=ActionSupport.SUCCESS, location="gotoViewPizza.action", type="redirect", params={"updated","true"}),
 			@Result(name=ActionSupport.INPUT, location="pages/editPizza.jsp")
 	})
 	public String EditPizza() {
