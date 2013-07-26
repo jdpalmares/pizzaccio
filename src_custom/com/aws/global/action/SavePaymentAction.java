@@ -66,6 +66,9 @@ public class SavePaymentAction extends BaseActionSupport{
 	}
 	
 	public void validate(){
+		String dummyCustomerName = transaction.getCustomer();
+		String trimmedDummyCustomerName = dummyCustomerName.trim();
+		transaction.setCustomer(trimmedDummyCustomerName.replaceAll("\\s+"," "));
 		if(transaction.getPayment()==0){
 			addFieldError("transaction.payment", getText("error.common.payment.required"));
 		}
