@@ -27,6 +27,8 @@ public class ViewPizzaAction extends BaseActionSupport{
 
 	//Other Variables
 	private List<Pizza> pizzas;
+	
+	private boolean success;
 
 	//When User Chooses View Pizza Option in the navbar
 	@Action(value="gotoViewPizza", results={
@@ -35,6 +37,9 @@ public class ViewPizzaAction extends BaseActionSupport{
 	public String gotoViewPizza() {
 		System.out.println("Redirecting to View Pizza Page");
 		setPizzas(pizzaServiceImpl.getAllPizza());
+		if(isSuccess()){
+			addActionMessage(getText("sucess.common.addPizza"));
+		}
 		return ActionSupport.SUCCESS;
 	}
 		
@@ -61,5 +66,19 @@ public class ViewPizzaAction extends BaseActionSupport{
 
 	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
+	}
+
+	/**
+	 * @return the success
+	 */
+	public boolean isSuccess() {
+		return success;
+	}
+
+	/**
+	 * @param success the success to set
+	 */
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 }
