@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 @Namespace("/")
 public class SaveOrderAction extends BaseActionSupport {
-	
+	//Autowired Variables
 	@Autowired
 	@Qualifier("pizzaServiceImpl")
 	private PizzaServiceImpl pizzaServiceImpl;
@@ -31,8 +31,10 @@ public class SaveOrderAction extends BaseActionSupport {
 	@Qualifier("order")
 	private Order order;
 	
+	//Other Variables
 	private ArrayList<Pizza> pizzas;
 	
+	//Actions
 	@Action(value="saveOrder", results ={
 		@Result(name=ActionSupport.SUCCESS, location="goToAddOrder", type="redirect", params = {"success", "true"}),
 		@Result(name=ActionSupport.INPUT, location="pages/addOrder.jsp"),
@@ -49,7 +51,7 @@ public class SaveOrderAction extends BaseActionSupport {
 		if(order.getPizzaId()==-1){
 			addFieldError("order.pizzaId", getText("error.common.pizzaname.required"));
 		}
-		if(order.getQuantity()==0){
+		if(order.getQuantity()<1){
 			addFieldError("order.quantity", getText("error.common.quantity.required"));
 		}
 		System.out.println(order.isDineType());

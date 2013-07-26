@@ -47,8 +47,8 @@ public class UpdatePizzaAction extends BaseActionSupport{
 		if("".equals(pizza.getPizzaName())){
 			addFieldError("pizza.pizzaName", "Pizza's Name cannot be blank.");
 		}
-		if(pizza.getPizzaPrice()==0){
-			addFieldError("pizza.pizzaPrice", "Pizza's Price cannot be zero or blank.");
+		if(pizza.getPizzaPrice()<1){
+			addFieldError("pizza.pizzaPrice", "Pizza's Price cannot be zero or lower or blank.");
 		}
 	}
 	
