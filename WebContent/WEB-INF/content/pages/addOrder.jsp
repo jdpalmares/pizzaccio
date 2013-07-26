@@ -32,5 +32,16 @@
 			</s:form>
 			</div>
 		</div>
+		<script type="text/javascript">
+		  /*<![CDATA[*/
+		  jQuery(function($) {
+			  $('input[type=reset]').click(function(e){
+				  if($('input[type="text"][name="order.quantity"]').val()=="0"){
+				  	$('input[type="text"][name="order.quantity"]').attr('value',"");
+				  }
+			  });
+		  });
+		  /*]]>*/
+	  	</script>
     </jsp:body>
 </t:genericpage>

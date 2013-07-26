@@ -31,7 +31,7 @@ public class AddOrderAction extends BaseActionSupport {
 	private boolean success;
 	
 	//Actions
-	@Action(value="addOrder", results ={
+	@Action(value="goToAddOrder", results ={
 			@Result(name=ActionSupport.SUCCESS, location="pages/addOrder.jsp"),
 	})
 	public String AddOrderForm() {

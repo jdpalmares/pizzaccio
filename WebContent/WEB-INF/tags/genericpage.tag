@@ -40,11 +40,11 @@
 				</a>
 				<div class="nav-collapse">
 					<ul class="nav main-nav">
-						<li><a href="<s:url action="addOrder" namespace="/"/>"><s:text name="link.common.navbar.AddOrder" /></a></li>
+						<li><a href="<s:url action="goToAddOrder" namespace="/"/>"><s:text name="link.common.navbar.AddOrder" /></a></li>
 						<li><a href="<s:url action="goToViewOrder" namespace="/"/>"><s:text name="link.common.navbar.ViewOrder" /></a></li>
 						<li><a href="<s:url action="gotoAddPizza" namespace="/"/>"><s:text name="link.common.navbar.AddPizza" /></a></li>
 						<li><a href="<s:url action="gotoViewPizza" namespace="/"/>"><s:text name="link.common.navbar.ViewPizza" /></a></li>
-						<li><a href="<s:url action="gotoSales" namespace="/"/>">Sales Check</a></li>
+						<li><a href="<s:url action="gotoSales" namespace="/"/>"><s:text name="link.common.navbar.Sales" /></a></li>
 					</ul>
 					<ul class="nav pull-right">
 						<li><a href="#"><s:text name="link.common.navbar.welcome" /></a></li>
@@ -90,9 +90,13 @@
 						<s:url id="localeJP" namespace="/" action="locale" >
 						   <s:param name="request_locale" >jp</s:param>
 						</s:url>
+						<s:url id="localePH" namespace="/" action="locale" >
+						   <s:param name="request_locale" >ph</s:param>
+						</s:url>
 						Pizzaccio in 
 						<s:a href="%{localeEN}" ><s:text name="label.common.footer.language_en" /></s:a> |
-						<s:a href="%{localeJP}" ><s:text name="label.common.footer.language_jp" /></s:a>
+						<s:a href="%{localeJP}" ><s:text name="label.common.footer.language_jp" /></s:a> |
+						<s:a href="%{localePH}" ><s:text name="label.common.footer.language_ph" /></s:a>
       				</span>
       			</div>
 			</div>
